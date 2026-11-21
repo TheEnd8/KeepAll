@@ -150,7 +150,7 @@ $('#sv').onclick=async()=>{if(!d.text.trim()&&!d.blob)return toast('請先輸入
   await put(d);$('#ed').close();load();toast('已儲存')};
 $('#dl').onclick=async()=>{if(confirm('確定刪除這則資料？')){await rm(d.id);sel.delete(d.id);$('#ed').close();load()}};
 $('#cx').onclick=()=>$('#ed').close();
-document.addEventListener('paste',e=>{const f=[...(e.clipboardData?.files||[])][0],t=e.clipboardData?.getData('text');
+document.addEventListener('paste',e=>{if(e.target.matches('input')||$('#st').open||$('#an').open)return;const f=[...(e.clipboardData?.files||[])][0],t=e.clipboardData?.getData('text');
   if(!$('#ed').open){if(!f&&!t)return;e.preventDefault();openEd();}else if(!f)return;
   if(f){e.preventDefault();setBlob(f)}if(t&&!$('#tx').value){$('#tx').value=d.text=t;sched()}});
 /* ---- list actions ---- */
