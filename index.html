@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-TW" data-t="pro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e6f7a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<title>收納匣</title>
+<style>
+:root{--bg:#eef1f4;--ink:#17212b;--mut:#5d6b78;--card:#fff;--ac:#0e6f7a;--on:#fff;--s:28%;--l:40%;--r:12px;--ln:#d9dfe5}
+[data-t=fun]{--bg:#fff1d0;--ink:#2a1a3d;--mut:#7a6490;--card:#fffdf6;--ac:#e0457b;--s:88%;--l:54%;--r:24px;--ln:#f1d9a6}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;padding:env(safe-area-inset-top) 0 140px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 16px 6px}
+h1{margin:0;font-size:30px;font-weight:800;letter-spacing:.08em}
+button,input,textarea{font:inherit;color:inherit}
+button{border:0;background:var(--card);border-radius:999px;padding:8px 14px;border:1px solid var(--ln);cursor:pointer}
+header button{margin-left:6px}
+.p{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}
+input,textarea{width:100%;border:1px solid var(--ln);background:var(--card);border-radius:var(--r);padding:11px 14px;margin:4px 0}
+#q{width:calc(100% - 32px);margin:8px 16px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 10px;scrollbar-width:none}
+nav button{white-space:nowrap}
+nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+main{padding:0 16px;display:grid;gap:12px}
+.cd{display:flex;background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--ln);position:relative}
+.cd:before{content:"";width:9px;background:var(--st);flex:none}
+.cd.on{outline:3px solid var(--ac)}
+.ck{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--mut);margin:14px 0 0 12px}
+.cd.on .ck{background:var(--ac);border-color:var(--ac);box-shadow:inset 0 0 0 4px var(--card)}
+.bd{padding:12px 14px;min-width:0;flex:1}
+.bd p{margin:4px 0 8px;white-space:pre-wrap;word-break:break-word;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.bd img,.bd video{width:100%;max-height:280px;object-fit:cover;border-radius:calc(var(--r) - 4px)}
+.tg{display:flex;flex-wrap:wrap;gap:6px}
+.tg span,.ch{--c:hsl(var(--h) var(--s) var(--l));background:hsl(var(--h) var(--s) var(--l)/.15);color:hsl(var(--h) var(--s) 26%);border-radius:999px;padding:2px 11px;font-size:14px;border:1px solid transparent}
+.ch.on{background:var(--c);color:#fff}
+.rm{font-size:14px;color:var(--mut);margin-top:6px}
+.emp{text-align:center;color:var(--mut);padding:60px 20px}
+#fab{position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom));width:62px;height:62px;border-radius:50%;font-size:34px;line-height:1;padding:0;box-shadow:0 6px 18px #0004}
+#bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--ln);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:grid;gap:8px;z-index:5}
+#bar[hidden]{display:none}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row>*{flex:1}
+dialog{width:min(560px,100%);max-height:92vh;border:0;border-radius:24px 24px 0 0;padding:18px;background:var(--bg);color:var(--ink);margin:auto auto 0}
+dialog::backdrop{background:#0008}
+h2{margin:0 0 8px}h3{margin:14px 0 6px;font-size:16px}
+small,.mut{color:var(--mut);font-weight:400}
+#cc{display:flex;flex-wrap:wrap;gap:8px}
+#pv img,#pv video{width:100%;max-height:220px;object-fit:cover;border-radius:var(--r)}
+#tx{min-height:110px}
+#ao{white-space:pre-wrap;word-break:break-word;max-height:60vh;overflow:auto}
+#tt{position:fixed;left:50%;top:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%}
+#tt.on{opacity:1}
+</style>
+</head>
+<body>
+<header><h1>收納匣</h1><div><button id="th">換主題</button><button id="gs">設定</button></div></header>
+<input id="q" type="search" placeholder="搜尋內容、類別、地點、情境…">
+<nav id="fl"></nav>
+<main id="ls"></main>
+<button id="fab" class="p" aria-label="新增">＋</button>
+
+<div id="bar" hidden>
+  <div class="row"><input id="qa" placeholder="針對已選資料提問…"><button id="ask" class="p" style="flex:none">詢問 AI</button></div>
+  <div class="row"><span id="cnt" class="mut"></span><button id="sh">分享</button><button id="all">全選</button><button id="del">刪除</button><button id="clr">取消</button></div>
+</div>
+
+<dialog id="ed">
+  <h2 id="et">新增資料</h2>
+  <textarea id="tx" placeholder="貼上或輸入文字、網址、想法…（也可直接貼上圖片）"></textarea>
+  <div id="pv"></div>
+  <div class="row" style="margin-top:6px"><button id="pk" type="button">加入圖片／影片／檔案</button><input id="fi" type="file" hidden></div>
+  <h3>類別 <small id="hint">可複選</small></h3>
+  <div id="cc"></div>
+  <h3>要提醒你嗎？</h3>
+  <p class="mut" style="margin:0">告訴我何時、何地或什麼情境需要再看到這則資料，可留空。</p>
+  <input id="rw" type="datetime-local" aria-label="提醒時間">
+  <input id="rp" placeholder="地點，例如：公司、超市">
+  <input id="rc" placeholder="情境，例如：開會前、通勤時">
+  <div class="row" style="margin-top:12px"><button id="sv" class="p">儲存</button><button id="dl">刪除</button><button id="cx">取消</button></div>
+</dialog>
+
+<dialog id="st">
+  <h2>設定</h2>
+  <p class="mut">AI 歸類與提問使用你自己的 Gemini API Key，只保存在這支手機的瀏覽器中。</p>
+  <input id="gk" type="password" placeholder="Gemini API Key" autocomplete="off">
+  <input id="gm" placeholder="模型名稱（預設 gemini-2.5-flash）">
+  <div class="row" style="margin-top:12px"><button id="ss" class="p">儲存</button><button id="sc">關閉</button></div>
+</dialog>
+
+<dialog id="an">
+  <h2>AI 分析</h2><div id="ao"></div>
+  <div class="row" style="margin-top:12px"><button id="ac2">複製</button><button id="as">分享</button><button id="ax" class="p">關閉</button></div>
+</dialog>
+<div id="tt"></div>
+
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CATS=[['工作','會議|專案|客戶|報告|合約|簡報|主管|meeting|deadline'],['財務','發票|帳單|股|投資|報價|預算|營收|匯率|元|\\$'],['健康','醫|藥|運動|睡眠|飲食|健檢|症'],['學習','論文|課程|筆記|研究|教學|study'],['待辦','記得|待辦|提醒|明天|下週|截止|todo'],['生活','家人|朋友|餐|聚會|生日'],['旅遊','機票|飯店|行程|旅|景點|訂房'],['購物','購買|訂單|優惠|折扣|商品'],['靈感','想法|點子|靈感|idea'],['連結','https?:|www\\.'],['圖片',''],['影片',''],['檔案',''],['其他','']];
+const custom=()=>JSON.parse(localStorage.cu||'[]'),allCats=()=>[...CATS.map(c=>c[0]),...custom()],hue=c=>(allCats().indexOf(c)*47)%360;
+let items=[],sel=new Set(),flt='',d=null,tm,asked='';
+/* ---- storage ---- */
+const DB=new Promise((ok,no)=>{const r=indexedDB.open('box',1);r.onupgradeneeded=()=>r.result.createObjectStore('items',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=no});
+const tx=async(m,f)=>{const db=await DB;return new Promise((ok,no)=>{const t=db.transaction('items',m),q=f(t.objectStore('items'));t.oncomplete=()=>ok(q&&q.result);t.onerror=no})};
+const put=i=>tx('readwrite',s=>s.put(i)),rm=id=>tx('readwrite',s=>s.delete(id));
+async function load(){items=(await tx('readonly',s=>s.getAll())).sort((a,b)=>b.upd-a.upd);draw()}
+/* ---- ui ---- */
+function toast(t){const e=$('#tt');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2600)}
+const U=new Map(),url=i=>{const k=i.id+i.upd;if(!U.has(k))U.set(k,URL.createObjectURL(i.blob));return U.get(k)};
+const media=i=>!i.blob?'':i.blob.type.startsWith('image')?`<img src="${url(i)}" alt="">`:i.blob.type.startsWith('video')?`<video src="${url(i)}" controls preload="metadata"></video>`:`<p>📎 ${esc(i.fname)}</p>`;
+const rtxt=i=>[i.rw&&new Date(i.rw).toLocaleString('zh-TW',{hour12:false}),i.rp&&'地點：'+i.rp,i.rc&&'情境：'+i.rc].filter(Boolean).join('　');
+function draw(){
+  const q=$('#q').value.trim().toLowerCase();
+  const used=[...new Set(items.flatMap(i=>i.cats))];
+  $('#fl').innerHTML=['全部',...used].map(c=>`<button class="${(flt||'全部')==c?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+  const list=items.filter(i=>(!flt||i.cats.includes(flt))&&(!q||[i.text,i.fname,i.cats.join(),i.rp,i.rc].join(' ').toLowerCase().includes(q)));
+  $('#ls').innerHTML=list.map(i=>{const n=i.cats.length||1,st=i.cats.map((c,k)=>`hsl(${hue(c)} var(--s) var(--l)) ${k*100/n}% ${(k+1)*100/n}%`).join(',')||'var(--ln)';
+    return `<article class="cd ${sel.has(i.id)?'on':''}" data-id="${i.id}" style="--st:linear-gradient(${st})"><i class="ck"></i><div class="bd">${media(i)}<p>${esc(i.text||(i.blob?'':'（空白）'))}</p><div class="tg">${i.cats.map(c=>`<span style="--h:${hue(c)}">${esc(c)}</span>`).join('')}</div>${rtxt(i)?`<div class="rm">⏰ ${esc(rtxt(i))}</div>`:''}</div></article>`}).join('')||`<div class="emp">${items.length?'沒有符合的資料':'還沒有資料。點右下角「＋」，貼上文字、圖片或影片就能開始。'}</div>`;
+  $('#bar').hidden=!sel.size;$('#cnt').textContent=`已選 ${sel.size} 項`;
+}
+/* ---- classify ---- */
+const b64=b=>new Promise(o=>{const f=new FileReader;f.onload=()=>o(f.result.split(',')[1]);f.readAsDataURL(b)});
+async function ai(parts,sys){const k=localStorage.k;if(!k)throw Error('請先到「設定」輸入 Gemini API Key');
+  const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${localStorage.m||'gemini-2.5-flash'}:generateContent`,{method:'POST',headers:{'content-type':'application/json','x-goog-api-key':k},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}]})});
+  const j=await r.json();if(!r.ok)throw Error(j.error?.message||r.status);return(j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('')||'（沒有回覆）'}
+async function parts(i){const p=[{text:i.text||'（無文字）'}];if(i.blob&&i.blob.size<9e6)p.push({inlineData:{mimeType:i.blob.type||'application/octet-stream',data:await b64(i.blob)}});return p}
+function local(t,b){const r=CATS.filter(([n,p])=>p&&new RegExp(p,'i').test(t)).map(c=>c[0]);if(b)r.push(b.type.startsWith('image')?'圖片':b.type.startsWith('video')?'影片':'檔案');return r.length?r:['其他']}
+function sched(){clearTimeout(tm);tm=setTimeout(auto,700)}
+async function auto(){if(!d||d.manual)return;let c=local(d.text,d.blob);
+  if(localStorage.k&&(d.text||d.blob)){$('#hint').textContent='AI 歸類中…';
+    try{const o=await ai([...await parts(d),{text:'可用類別：'+allCats().join('、')+'\n請選出所有適用的類別，只回傳 JSON 字串陣列。'}],'你是資料整理助手。');
+      const a=JSON.parse(o.match(/\[[\s\S]*\]/)[0]).filter(x=>allCats().includes(x));if(a.length)c=a}catch(e){}}
+  if(d.manual)return;d.cats=c;chips();$('#hint').textContent='已自動歸類，點選即可修改'}
+function chips(){$('#cc').innerHTML=allCats().map(c=>`<button type="button" class="ch ${d.cats.includes(c)?'on':''}" style="--h:${hue(c)}" data-c="${esc(c)}">${esc(c)}</button>`).join('')+'<button type="button" id="nc">＋ 自訂</button>'}
+/* ---- editor ---- */
+function pv(){$('#pv').innerHTML=d.blob?(d.blob.type.startsWith('image')?`<img src="${URL.createObjectURL(d.blob)}">`:d.blob.type.startsWith('video')?`<video src="${URL.createObjectURL(d.blob)}" controls></video>`:`<p>📎 ${esc(d.fname)}</p>`):''}
+function openEd(i){d=i?{...i,cats:[...i.cats],manual:true}:{id:'i'+Date.now(),text:'',cats:[],manual:false,blob:null};
+  $('#et').textContent=i?'編輯資料':'新增資料';$('#tx').value=d.text||'';$('#rw').value=d.rw||'';$('#rp').value=d.rp||'';$('#rc').value=d.rc||'';$('#dl').hidden=!i;
+  chips();pv();$('#hint').textContent=i?'可複選':'貼上內容後會自動歸類';$('#ed').showModal();if(!i&&d.text)sched()}
+function setBlob(f){d.blob=f;d.fname=f.name||'貼上的檔案';pv();sched()}
+$('#tx').oninput=e=>{d.text=e.target.value;sched()};
+$('#pk').onclick=()=>$('#fi').click();$('#fi').onchange=e=>e.target.files[0]&&setBlob(e.target.files[0]);
+$('#cc').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.id=='nc'){const n=(prompt('新類別名稱')||'').trim();if(n&&!allCats().includes(n)){localStorage.cu=JSON.stringify([...custom(),n]);d.cats.push(n);d.manual=true}}
+  else{const c=b.dataset.c;d.cats=d.cats.includes(c)?d.cats.filter(x=>x!=c):[...d.cats,c];d.manual=true}chips()};
+$('#sv').onclick=async()=>{if(!d.text.trim()&&!d.blob)return toast('請先輸入內容或加入檔案');
+  Object.assign(d,{rw:$('#rw').value,rp:$('#rp').value.trim(),rc:$('#rc').value.trim(),upd:Date.now(),fired:0});if(!d.cats.length)d.cats=local(d.text,d.blob);delete d.manual;
+  if(d.rw&&'Notification'in window&&Notification.permission=='default')Notification.requestPermission();
+  await put(d);$('#ed').close();load();toast('已儲存')};
+$('#dl').onclick=async()=>{if(confirm('確定刪除這則資料？')){await rm(d.id);sel.delete(d.id);$('#ed').close();load()}};
+$('#cx').onclick=()=>$('#ed').close();
+document.addEventListener('paste',e=>{const f=[...(e.clipboardData?.files||[])][0],t=e.clipboardData?.getData('text');
+  if(!$('#ed').open){if(!f&&!t)return;e.preventDefault();openEd();}else if(!f)return;
+  if(f){e.preventDefault();setBlob(f)}if(t&&!$('#tx').value){$('#tx').value=d.text=t;sched()}});
+/* ---- list actions ---- */
+$('#fab').onclick=()=>openEd();
+$('#fl').onclick=e=>{const b=e.target.closest('button');if(b){flt=b.dataset.c=='全部'?'':b.dataset.c;draw()}};
+$('#q').oninput=draw;
+$('#ls').onclick=e=>{const c=e.target.closest('.cd');if(!c)return;const id=c.dataset.id;
+  if(e.target.classList.contains('ck')||sel.size){sel.has(id)?sel.delete(id):sel.add(id);draw()}else openEd(items.find(i=>i.id==id))};
+$('#clr').onclick=()=>{sel.clear();draw()};$('#all').onclick=()=>{items.forEach(i=>sel.add(i.id));draw()};
+$('#del').onclick=async()=>{if(confirm(`刪除已選的 ${sel.size} 項？`)){for(const id of sel)await rm(id);sel.clear();load()}};
+async function share(text,files){const o={title:'收納匣',text};if(files?.length&&navigator.canShare?.({files}))o.files=files;
+  try{if(!navigator.share)throw 0;await navigator.share(o)}catch(e){if(e?.name=='AbortError')return;await navigator.clipboard?.writeText(text);toast('此裝置不支援分享，已複製文字')}}
+$('#sh').onclick=()=>{const l=items.filter(i=>sel.has(i.id));
+  share(l.map(i=>[i.text,rtxt(i)].filter(Boolean).join('\n')).join('\n\n———\n\n'),l.filter(i=>i.blob).map(i=>new File([i.blob],i.fname||'file',{type:i.blob.type})))};
+$('#ask').onclick=async()=>{const q=$('#qa').value.trim();if(!q)return toast('請先輸入問題');
+  const l=items.filter(i=>sel.has(i.id));$('#ao').textContent='AI 分析中…';$('#an').showModal();
+  try{const p=[];for(const [n,i] of l.entries()){p.push({text:`【資料${n+1}】類別：${i.cats.join('、')}${rtxt(i)?'；提醒：'+rtxt(i):''}\n${i.text||''}`});if(i.blob&&i.blob.size<9e6)p.push({inlineData:{mimeType:i.blob.type||'application/octet-stream',data:await b64(i.blob)}})}
+    p.push({text:'問題：'+q});asked=await ai(p,'你是使用者的個人資料分析助手。只根據提供的資料回答，使用繁體中文，條理清楚；資料不足時直接說明。');$('#ao').textContent=asked}
+  catch(e){$('#ao').textContent='失敗：'+e.message}};
+$('#ax').onclick=()=>$('#an').close();$('#ac2').onclick=()=>{navigator.clipboard?.writeText($('#ao').textContent);toast('已複製')};$('#as').onclick=()=>share($('#ao').textContent);
+/* ---- settings / theme ---- */
+const theme=()=>{document.documentElement.dataset.t=localStorage.t||'pro';document.querySelector('meta[name=theme-color]').content=localStorage.t=='fun'?'#e0457b':'#0e6f7a'};
+$('#th').onclick=()=>{localStorage.t=localStorage.t=='fun'?'pro':'fun';theme()};
+$('#gs').onclick=()=>{$('#gk').value=localStorage.k||'';$('#gm').value=localStorage.m||'';$('#st').showModal()};
+$('#ss').onclick=()=>{localStorage.k=$('#gk').value.trim();localStorage.m=$('#gm').value.trim();$('#st').close();toast('設定已儲存')};$('#sc').onclick=()=>$('#st').close();
+/* ---- reminders ---- */
+async function chk(){for(const i of items)if(i.rw&&!i.fired&&new Date(i.rw)<=Date.now()){i.fired=1;await put(i);toast('提醒：'+(i.text||i.fname||'').slice(0,28));
+  if('Notification'in window&&Notification.permission=='granted')navigator.serviceWorker?.ready.then(r=>r.showNotification('收納匣提醒',{body:[i.text||i.fname,i.rp,i.rc].filter(Boolean).join('\n'),icon:'icon-192.png',tag:i.id}))}}
+setInterval(chk,30000);document.addEventListener('visibilitychange',()=>!document.hidden&&chk());
+/* ---- boot ---- */
+theme();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+load().then(()=>{chk();const u=new URLSearchParams(location.search),t=[u.get('title'),u.get('text'),u.get('url')].filter(Boolean).join('\n');
+  if(t){history.replaceState(null,'',location.pathname);openEd();$('#tx').value=d.text=t;sched()}});
+</script>
+</body>
+</html>
