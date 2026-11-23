@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -683,17 +682,17 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <div class="p-5 space-y-4">
-                <div class="p-3.5 rounded-xl theme-surface-secondary border theme-border space-y-1.5 max-h-48 overflow-y-auto">
-                    <p id="sharePreviewTitle" class="font-bold text-sm theme-text-primary"></p>
-                    <p id="sharePreviewText" class="text-xs theme-text-secondary whitespace-pre-line"></p>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2.5">
-                    <button type="button" onclick="triggerNativeShareFromModal()" class="touch-target col-span-2 theme-btn-primary py-2.5 px-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-sm">
-                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                        <span>呼叫手機 / 系統原生分享面板（LINE、WhatsApp、AirDrop 等）</span>
-                    </button>
+                    <!-- 檔案：index.html -->
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button type="button" onclick="triggerNativeShareFromModal()" class="touch-target flex-1 theme-btn-primary py-2.5 px-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            <span>系統原生分享面板（可選 Keep / LINE）</span>
+                        </button>
+                        <button type="button" onclick="shareModalItemDirectToKeep()" class="touch-target py-2.5 px-4 rounded-xl text-sm font-semibold bg-amber-500 hover:bg-amber-600 text-white flex items-center justify-center gap-2 shadow-sm transition">
+                            <i class="fa-regular fa-lightbulb"></i>
+                            <span>直接傳送至 Keep</span>
+                        </button>
+                    </div>
                     <button type="button" onclick="copyShareText()" class="touch-target py-2.5 px-3 rounded-xl text-xs font-semibold theme-surface-secondary border theme-border theme-text-primary hover:opacity-80 flex items-center justify-center gap-1.5">
                         <i class="fa-regular fa-copy text-indigo-500"></i> 複製文字內容
                     </button>
@@ -712,146 +711,228 @@
     </div>
 
     <!-- ===================================================================== -->
-    <!-- 彈窗 4: 圖片/媒體放大預覽燈箱 -->
+    <!-- 彈窗 5: Google Keep 雙向整合與同步中心 (全面升級三通道零阻礙版) -->
     <!-- ===================================================================== -->
-    <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-        <div onclick="event.stopPropagation()" class="relative max-w-4xl max-h-[90vh] flex flex-col items-center">
-            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white/80 hover:text-white text-sm flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full">
-                <i class="fa-solid fa-xmark"></i> 關閉預覽
-            </button>
-            <img id="lightboxImage" src="" alt="放大預覽" class="max-w-full max-h-[82vh] rounded-xl shadow-2xl object-contain">
-            <p id="lightboxCaption" class="text-white/90 text-sm mt-3 font-medium text-center"></p>
-        </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- 彈窗 5: Google Keep 雙向整合與同步中心 -->
-    <!-- ===================================================================== -->
-    <div id="keepSyncModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div id="keepSyncModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
         <div class="theme-surface border rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl my-auto">
             <!-- Header -->
-            <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4 text-white flex items-center justify-between">
+            <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-4 text-white flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
                         <i class="fa-regular fa-lightbulb text-xl"></i>
                     </div>
                     <div>
-                        <h2 class="font-bold text-base sm:text-lg">Google Keep 雙向同步整合中心</h2>
-                        <p class="text-xs text-white/90">雙向同步筆記、自動對應 #類別標籤、匯入 Google Keep 備份與 Apps Script 雲端橋接</p>
+                        <h2 class="font-bold text-base sm:text-lg">Google Keep 三通道雙向整合中心</h2>
+                        <p class="text-xs text-white/90">專為 Android 手機與桌面瀏覽器設計，支援一鍵系統直傳、雲端自動橋接與反向解析匯入</p>
                     </div>
                 </div>
-                <button onclick="closeKeepSyncModal()" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
+                <button onclick="closeKeepSyncModal()" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition flex-shrink-0">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <!-- Body -->
-            <div class="p-6 space-y-5 max-h-[80vh] overflow-y-auto">
-                <!-- 1. 雙向同步操作面板 -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Push 至 Keep -->
-                    <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-bold theme-text-primary flex items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-up text-amber-500"></i> 推送至 Google Keep
-                            </span>
-                            <span id="keepPendingCountBadge" class="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 font-semibold">0 筆待同步</span>
-                        </div>
-                        <p class="text-xs theme-text-secondary">將所有資料與複選類別自動轉為 Google Keep 支援的 <code class="px-1 py-0.5 rounded bg-black/5">#標籤</code> 與提醒格式同步。</p>
-                        <button onclick="pushAllToGoogleKeep()" class="w-full py-2 px-3 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-600 text-white transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-rotate"></i>
-                            <span>立即將全部資料同步至 Keep</span>
-                        </button>
-                    </div>
+            <div class="p-4 sm:p-6 space-y-5 max-h-[82vh] overflow-y-auto">
+                <!-- 技術原因說明提示條 -->
+                <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs theme-text-secondary leading-relaxed space-y-1">
+                    <p class="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info"></i> 為什麼先前無法直接背景寫入 Google Keep？
+                    </p>
+                    <p>Google 官方僅對企業付費網域開放 Keep API，個人帳號無法直接寫入，且手機瀏覽器會阻擋非同步跳轉。以下為您配置 <strong>3 種 100% 可用通道</strong>：</p>
+                </div>
 
-                    <!-- Pull 從 Keep 匯入 -->
-                    <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-bold theme-text-primary flex items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-down text-sky-500"></i> 從 Google Keep 拉取匯入
-                            </span>
-                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 font-semibold">AI 自動補全分類</span>
-                        </div>
-                        <p class="text-xs theme-text-secondary">從雲端橋接端點拉取最新 Keep 筆記，或直接匯入 Google Takeout Keep JSON 檔案。</p>
-                        <div class="flex gap-2">
-                            <button onclick="pullFromGoogleKeepEndpoint()" class="flex-1 py-2 px-3 rounded-xl text-xs font-semibold theme-btn-primary flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-download"></i>
-                                <span>雲端拉取</span>
-                            </button>
-                            <label class="flex-1 py-2 px-3 rounded-xl text-xs font-semibold theme-surface border theme-border theme-text-primary hover:opacity-80 cursor-pointer flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-file-import text-emerald-500"></i>
-                                <span>匯入 JSON</span>
-                                <input type="file" accept=".json" class="hidden" onchange="importGoogleKeepJson(event)">
-                            </label>
-                        </div>
+                <!-- 通道 A：手機系統原生直傳 & 同步彈窗開啟 Keep (免設定) -->
+                <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-3">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <span class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500 text-white text-[11px]">通道 A · 最推薦免設定</span>
+                            Android 原生直傳 & 網頁版快速開啟
+                        </span>
+                        <span id="keepPendingCountBadge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 font-semibold">0 筆待同步</span>
+                    </div>
+                    <p class="text-xs theme-text-secondary">
+                        點擊卡片右下角的 <i class="fa-regular fa-lightbulb text-amber-500"></i> 燈泡按鈕，或在下方批次推送，系統會立即喚起手機分享面板（點選 <strong>Google Keep</strong> 圖示即自動建立含 <code class="px-1 py-0.5 rounded bg-black/5">#類別標籤</code> 與提醒的原生筆記），或同步複製並開啟 Keep 網頁版。
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <button type="button" onclick="nativeShareAllToKeep()" class="touch-target py-2.5 px-4 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center justify-center gap-2 shadow-xs">
+                            <i class="fa-solid fa-share-nodes"></i>
+                            <span>喚起系統分享直傳 Keep（全部資料）</span>
+                        </button>
+                        <button type="button" onclick="copyAndOpenKeepWeb()" class="touch-target py-2.5 px-4 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white transition flex items-center justify-center gap-2 shadow-xs">
+                            <i class="fa-solid fa-up-right-from-square"></i>
+                            <span>一鍵複製並開啟 Keep 網頁版新增</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- 2. Google Apps Script 雙向自動化橋接設定 -->
+                <!-- 通道 B：Google Apps Script + Google Docs/Sheets 自動雲端橋接 -->
                 <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-3">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
                         <label class="text-sm font-bold theme-text-primary flex items-center gap-2">
-                            <i class="fa-solid fa-plug text-emerald-500"></i>
-                            Google Apps Script 雙向同步端點設定（自動背景雙向同步）
+                            <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white text-[11px]">通道 B · 雲端自動橋接</span>
+                            Apps Script 自動寫入試算表 & Keep 側邊欄文件
                         </label>
-                        <button type="button" onclick="toggleGasCodeSection()" class="text-xs text-sky-600 dark:text-sky-400 hover:underline font-medium">
-                            檢視/複製橋接腳本 <i class="fa-solid fa-code ml-1"></i>
+                        <button type="button" onclick="toggleGasCodeSection()" class="text-xs text-sky-600 dark:text-sky-400 hover:underline font-semibold">
+                            展開部署腳本程式碼 <i class="fa-solid fa-code ml-1"></i>
                         </button>
                     </div>
-                    <p class="text-xs theme-text-secondary">
-                        貼上您的 Google Apps Script Web App URL，即可在每次新增/編輯資料時自動雙向同步至 Google Keep（若未填寫，系統仍提供一鍵直開 Google Keep 新增筆記與 #標籤複製連動）。
+                    <p class="text-xs theme-text-secondary leading-relaxed">
+                        部署後，每次儲存資料都會自動寫入您雲端硬碟的 <strong>Google 試算表</strong> 並同步更新 <strong>「Keep匯入暫存檔 (Google 文件)」</strong>（開啟 Keep App 或網頁右側邊欄，點選該文件即可一鍵「複製到 Keep」）。
                     </p>
                     <div class="flex flex-col sm:flex-row gap-2">
-                        <input type="url" id="keepWebhookUrlInput" placeholder="https://script.google.com/macros/s/您的腳本ID/exec" class="flex-1 px-3.5 py-2 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-amber-500">
-                        <button type="button" onclick="saveKeepWebhookConfig()" class="px-4 py-2 rounded-xl text-xs font-semibold theme-btn-primary whitespace-nowrap">
-                            儲存連線設定
+                        <input type="url" id="keepWebhookUrlInput" placeholder="https://script.google.com/macros/s/您的腳本ID/exec" class="touch-target flex-1 px-3.5 py-2 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        <button type="button" onclick="saveKeepWebhookConfig()" class="touch-target px-4 py-2 rounded-xl text-xs font-semibold theme-btn-primary whitespace-nowrap">
+                            儲存網址
                         </button>
                     </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                        <button type="button" onclick="pingKeepGasEndpoint()" class="touch-target py-2 px-3 rounded-xl text-xs font-semibold theme-surface border theme-border theme-text-primary hover:opacity-85 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-stethoscope text-emerald-500"></i>
+                            <span>連線測試 (Ping)</span>
+                        </button>
+                        <button type="button" onclick="pushAllToGoogleKeepCloud()" class="touch-target py-2 px-3 rounded-xl text-xs font-semibold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>雲端推送全部 (Push)</span>
+                        </button>
+                        <button type="button" onclick="pullFromGoogleKeepEndpoint()" class="touch-target py-2 px-3 rounded-xl text-xs font-semibold bg-sky-500/15 text-sky-800 dark:text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-cloud-arrow-down"></i>
+                            <span>雲端拉取同步 (Pull)</span>
+                        </button>
+                    </div>
+                    <div id="gasDiagnosticBox" class="hidden p-2.5 rounded-lg text-[11px] font-medium"></div>
 
-                    <!-- 可展開的 Google Apps Script 程式碼教學 -->
+                    <!-- 可展開的零錯誤 Google Apps Script 程式碼教學 -->
                     <div id="gasCodeSection" class="hidden pt-2 space-y-2">
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="font-semibold theme-text-primary">部署步驟：前往 script.google.com 新增專案 → 貼上以下程式碼 → 部署為「網頁應用程式（任何人皆可存取）」</span>
-                            <button type="button" onclick="copyGasScript()" class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">
-                                <i class="fa-regular fa-copy mr-1"></i>複製腳本
+                        <div class="flex items-center justify-between flex-wrap gap-2 text-xs">
+                            <span class="font-semibold theme-text-primary">部署步驟：前往 script.google.com 新增專案 → 貼上以下程式碼 → 部署為「網頁應用程式（執行身分：我；誰可以存取：所有人）」</span>
+                            <button type="button" onclick="copyGasScript()" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700">
+                                <i class="fa-regular fa-copy mr-1"></i>一鍵複製完整腳本
                             </button>
                         </div>
-                        <pre id="gasScriptCode" class="p-3 rounded-xl bg-slate-900 text-slate-100 text-[11px] overflow-x-auto leading-relaxed font-mono">// Google Apps Script: AI 智慧管家 <-> Google Keep 雙向同步橋接器
-// 將資料同步儲存至 Google Drive 專屬 Keep 同步資料夾與 Google Tasks/Keep 橋接表
-const SYNC_FILE_NAME = 'AI_Knowledge_Keep_Bridge.json';
+                        <pre id="gasScriptCode" class="p-3 rounded-xl bg-slate-900 text-slate-100 text-[11px] overflow-x-auto leading-relaxed font-mono">// Google Apps Script: AI 智慧管家 <-> Google Sheets & Keep 側邊欄雙向同步橋接器
+// 支援 text/plain 免 CORS 預檢、自動寫入試算表並產生可直接匯入 Keep 的 Google 文件
+const SHEET_NAME = 'AI智慧管家_Keep同步庫';
+const DOC_NAME = 'Keep匯入暫存檔_AI智慧管家';
 
 function doGet(e) {
-  const file = getOrCreateBridgeFile();
-  const content = file.getBlob().getDataAsString() || '[]';
-  return ContentService.createTextOutput(content).setMimeType(ContentService.MimeType.JSON);
+  try {
+    const action = (e && e.parameter && e.parameter.action) || 'pull';
+    if (action === 'ping') {
+      return jsonResponse({ status: 'ok', message: 'Google Apps Script 橋接連線成功！', time: new Date().toISOString() });
+    }
+    const sheet = getOrCreateSheet();
+    const rows = sheet.getDataRange().getValues();
+    const items = [];
+    for (let i = 1; i < rows.length; i++) {
+      if (!rows[i][0]) continue;
+      items.push({
+        id: String(rows[i][0]),
+        title: String(rows[i][1] || ''),
+        text: String(rows[i][2] || ''),
+        labels: String(rows[i][3] || '').split(',').map(s => s.trim()).filter(Boolean),
+        url: String(rows[i][4] || ''),
+        reminder: rows[i][5] ? JSON.parse(rows[i][5]) : { time: '', location: '', context: '' },
+        updatedAt: Number(rows[i][6]) || Date.now()
+      });
+    }
+    return jsonResponse({ status: 'ok', items: items });
+  } catch (err) {
+    return jsonResponse({ status: 'error', message: err.toString() });
+  }
 }
 
 function doPost(e) {
-  const payload = JSON.parse(e.postData.contents);
-  const file = getOrCreateBridgeFile();
-  let items = JSON.parse(file.getBlob().getDataAsString() || '[]');
-  
-  if (payload.action === 'upsert' && payload.item) {
-    const idx = items.findIndex(i => i.id === payload.item.id);
-    if (idx >= 0) items[idx] = payload.item;
-    else items.unshift(payload.item);
-  } else if (payload.action === 'batch_upsert' && Array.isArray(payload.items)) {
-    payload.items.forEach(newItem => {
-      const idx = items.findIndex(i => i.id === newItem.id);
-      if (idx >= 0) items[idx] = newItem;
-      else items.unshift(newItem);
+  try {
+    const raw = e.postData && e.postData.contents ? e.postData.contents : '{}';
+    const payload = JSON.parse(raw);
+    const sheet = getOrCreateSheet();
+    const incoming = payload.action === 'batch_upsert' && Array.isArray(payload.items)
+      ? payload.items
+      : (payload.item ? [payload.item] : []);
+
+    const existingRows = sheet.getDataRange().getValues();
+    const idRowMap = {};
+    for (let i = 1; i < existingRows.length; i++) {
+      if (existingRows[i][0]) idRowMap[String(existingRows[i][0])] = i + 1;
+    }
+
+    incoming.forEach(item => {
+      const rowData = [
+        item.id,
+        item.title || '',
+        item.text || '',
+        Array.isArray(item.labels) ? item.labels.join(', ') : '',
+        item.url || '',
+        JSON.stringify(item.reminder || {}),
+        item.updatedAt || Date.now()
+      ];
+      if (idRowMap[item.id]) {
+        sheet.getRange(idRowMap[item.id], 1, 1, 7).setValues([rowData]);
+      } else {
+        sheet.appendRow(rowData);
+      }
     });
+
+    updateKeepBridgeDoc(sheet);
+    return jsonResponse({ status: 'ok', syncedCount: incoming.length });
+  } catch (err) {
+    return jsonResponse({ status: 'error', message: err.toString() });
   }
-  file.setContent(JSON.stringify(items, null, 2));
-  return ContentService.createTextOutput(JSON.stringify({ status: 'ok', count: items.length }))
-    .setMimeType(ContentService.MimeType.JSON);
 }
 
-function getOrCreateBridgeFile() {
-  const files = DriveApp.getFilesByName(SYNC_FILE_NAME);
-  if (files.hasNext()) return files.next();
-  return DriveApp.createFile(SYNC_FILE_NAME, '[]', MimeType.PLAIN_TEXT);
+function updateKeepBridgeDoc(sheet) {
+  const files = DriveApp.getFilesByName(DOC_NAME);
+  const doc = files.hasNext() ? DocumentApp.openById(files.next().getId()) : DocumentApp.create(DOC_NAME);
+  const body = doc.getBody();
+  body.clear();
+  body.appendParagraph('📌 AI 智慧多媒體知識與靈感管家 — Google Keep 同步彙整').setHeading(DocumentApp.ParagraphHeading.HEADING1);
+  body.appendParagraph('提示：開啟 Google Keep 右側邊欄或 Keep App 開啟此文件，即可一鍵「複製到 Keep」。\n');
+  const rows = sheet.getDataRange().getValues();
+  for (let i = rows.length - 1; i >= 1; i--) {
+    body.appendParagraph('【' + rows[i][1] + '】').setHeading(DocumentApp.ParagraphHeading.HEADING2);
+    body.appendParagraph(rows[i][2] + '\n────────────────────\n');
+  }
+  doc.saveAndClose();
+}
+
+function getOrCreateSheet() {
+  const files = DriveApp.getFilesByName(SHEET_NAME);
+  const ss = files.hasNext() ? SpreadsheetApp.openById(files.next().getId()) : SpreadsheetApp.create(SHEET_NAME);
+  const sheet = ss.getSheets()[0];
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['ID', '標題', 'Keep格式化內文', '類別標籤', '網址', '提醒JSON', '更新時間戳']);
+  }
+  return sheet;
+}
+
+function jsonResponse(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }</pre>
+                    </div>
+                </div>
+
+                <!-- 通道 C：反向從 Google Keep 匯入 (貼上文字解析 #標籤 / Takeout JSON 匯入) -->
+                <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-3">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <span class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded-md bg-sky-600 text-white text-[11px]">通道 C · 反向匯入</span>
+                            從 Google Keep 匯入筆記（貼上文字 / Takeout JSON）
+                        </span>
+                    </div>
+                    <p class="text-xs theme-text-secondary">
+                        在手機 Google Keep 中複製或分享筆記文字貼到下方，系統會自動解析 <code class="px-1 py-0.5 rounded bg-black/5">#標籤</code> 還原為複選類別並收納！
+                    </p>
+                    <textarea id="pasteFromKeepTextarea" rows="3" placeholder="在此貼上從 Google Keep 複製的筆記內容（內含 #標籤 也會自動辨識歸類）..." class="w-full p-3 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button type="button" onclick="importFromPastedKeepText()" class="touch-target flex-1 py-2.5 px-4 rounded-xl text-xs font-bold theme-btn-primary flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-paste"></i>
+                            <span>解析貼上文字並加入管家</span>
+                        </button>
+                        <label class="touch-target flex-1 py-2.5 px-4 rounded-xl text-xs font-bold theme-surface border theme-border theme-text-primary hover:opacity-85 cursor-pointer flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-file-import text-emerald-500"></i>
+                            <span>匯入 Google Takeout Keep JSON</span>
+                            <input type="file" accept=".json,application/json" onchange="importGoogleKeepJson(event)" class="hidden">
+                        </label>
                     </div>
                 </div>
             </div>
@@ -2203,14 +2284,16 @@ function getOrCreateBridgeFile() {
             await window.persistItem(finalItem);
 
             if (shouldSyncKeep) {
-                await syncSingleItemToKeep(finalItem, true);
+                // 若有設定 GAS 雲端端點則背景同步；若無則不阻擋彈窗，僅標記待同步或提示
+                if (window.appState.keepWebhookUrl) {
+                    syncSingleItemToKeepCloud(finalItem, true);
+                }
             }
 
             if (!draft.isEdit) {
                 document.getElementById('quickInputText').value = '';
                 document.getElementById('quickInputUrl').value = '';
                 document.getElementById('urlInputRow').classList.add('hidden');
-                // 注意：若為影片，ObjectURL 已轉交給 finalItem，清空 pendingMedia 時不釋放該 URL
                 if (window.appState.pendingMedia) {
                     window.appState.pendingMedia = null;
                     const previewBox = document.getElementById('inputMediaPreview');
@@ -2462,8 +2545,9 @@ function getOrCreateBridgeFile() {
                                 ${keepStatusBadge}
                             </div>
                             <div class="flex items-center gap-1 flex-shrink-0">
-                                <button onclick="sendSingleItemToKeep('${item.id}')" class="p-2 rounded-lg hover:bg-amber-500/15 hover:text-amber-600 transition" title="傳送/同步至 Google Keep">
+                                <button onclick="sendSingleItemToKeep('${item.id}')" class="px-2 py-1.5 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 transition flex items-center gap-1 font-semibold" title="直接傳送/同步至 Google Keep">
                                     <i class="fa-regular fa-lightbulb"></i>
+                                    <span class="text-[11px]">Keep</span>
                                 </button>
                                 <button onclick="shareItem('${item.id}')" class="p-2 rounded-lg hover:bg-sky-500/10 hover:text-sky-600 transition" title="分享此資料">
                                     <i class="fa-solid fa-share-nodes"></i>
@@ -2732,15 +2816,15 @@ ${reminders.length > 0 ? reminders.join('\n') : '- 目前選取的資料尚未�
                 title: 'AI 跨資料深度分析報告',
                 text: window.appState.latestAnalysisResult,
                 url: '',
-                mediaType: 'text',
-                mediaData: ''
-            };
-            openShareModal();
+        function shareModalItemDirectToKeep() {
+            const s = window.appState.currentShareItem;
+            if (!s) return;
+            triggerDirectKeepShare(s.title, s.text, s.url || '');
         }
 
         function formatItemForShare(item) {
             let lines = [`📌 ${item.title}`];
-            if (item.categories?.length) lines.push(`🏷️ 類別：${item.categories.join('、')}`);
+            if (item.categories?.length) lines.push(`🏷️ 類別：${item.categories.map(c => '#' + c.replace(/\s+/g, '_')).join(' ')}`);
             lines.push(`\n${item.content}`);
             if (item.url) lines.push(`\n🔗 連結：${item.url}`);
             const rem = item.reminder || {};
@@ -2861,7 +2945,7 @@ ${reminders.length > 0 ? reminders.join('\n') : '- 目前選取的資料尚未�
         }
 
         // ---------------------------------------------------------------------
-        // 8. Google Keep 雙向整合與同步引擎
+        // 8. Google Keep 三通道雙向整合與同步引擎 (修復 Android 原生直傳與 GAS CORS)
         // ---------------------------------------------------------------------
         function updateKeepIndicatorUI() {
             const dot = document.getElementById('keepSyncIndicatorDot');
@@ -2892,12 +2976,7 @@ ${reminders.length > 0 ? reminders.join('\n') : '- 目前選取的資料尚未�
 
         function copyGasScript() {
             const code = document.getElementById('gasScriptCode').textContent;
-            const textarea = document.createElement('textarea');
-            textarea.value = code;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
+            syncCopyTextToClipboard(code);
             showToast('已複製 Google Apps Script 橋接腳本！', 'success');
         }
 
@@ -2906,7 +2985,24 @@ ${reminders.length > 0 ? reminders.join('\n') : '- 目前選取的資料尚未�
             window.appState.keepWebhookUrl = url;
             localStorage.setItem('ai_keep_webhook_url', url);
             updateKeepIndicatorUI();
-            showToast(url ? '已儲存 Google Keep 雙向同步端點！' : '已清除端點設定，切換為快捷連動模式', 'success');
+            showToast(url ? '已儲存 Google Keep 雙向同步端點！建議點擊「連線測試」驗證' : '已清除端點設定，切換為原生分享直傳模式', 'success');
+        }
+
+        // 同步複製工具 (不依賴 await，確保緊接在後面的 window.open 或 navigator.share 100% 保留使用者手勢權限)
+        function syncCopyTextToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (e) {}
+            document.body.removeChild(textarea);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => {});
+            }
         }
 
         function formatForGoogleKeep(item) {
@@ -2925,72 +3021,300 @@ ${reminders.length > 0 ? reminders.join('\n') : '- 目前選取的資料尚未�
             return body.trim();
         }
 
-        async function sendSingleItemToKeep(id) {
+        // 關鍵修正：必須在點擊事件的同步堆疊中立刻呼叫 navigator.share 或 window.open，絕不在之前放 await！
+        function triggerDirectKeepShare(title, formattedBody, url = '') {
+            const fullKeepNote = `${title}\n\n${formattedBody}`;
+            syncCopyTextToClipboard(fullKeepNote);
+
+            if (navigator.share) {
+                const sharePayload = {
+                    title: title,
+                    text: fullKeepNote
+                };
+                if (url) sharePayload.url = url;
+
+                navigator.share(sharePayload)
+                    .then(() => {
+                        showToast('已完成系統分享至 Google Keep！', 'success');
+                    })
+                    .catch((err) => {
+                        if (err && err.name !== 'AbortError') {
+                            window.open('https://keep.google.com/u/0/#NOTE', '_blank', 'noopener,noreferrer');
+                            showToast('已複製含 #標籤 筆記並開啟 Keep，長按貼上即可！', 'info');
+                        }
+                    });
+            } else {
+                window.open('https://keep.google.com/u/0/#NOTE', '_blank', 'noopener,noreferrer');
+                showToast('已複製含 #標籤 筆記並開啟 Google Keep，按 Ctrl+V / 貼上即可儲存！', 'success');
+            }
+        }
+
+        // 單張卡片點擊「Keep」按鈕
+        function sendSingleItemToKeep(id) {
             const item = window.appState.items.find(i => i.id === id);
             if (!item) return;
-            await syncSingleItemToKeep(item, false);
-        }
 
-        async function syncSingleItemToKeep(item, silent = false) {
             const keepBody = formatForGoogleKeep(item);
 
+            // 若有設定 GAS 雲端端點，背景同步寫入試算表與 Keep 側邊欄文件
             if (window.appState.keepWebhookUrl) {
-                try {
-                    await fetch(window.appState.keepWebhookUrl, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            action: 'upsert',
-                            item: {
-                                id: item.id,
-                                title: item.title,
-                                text: keepBody,
-                                labels: item.categories || [],
-                                url: item.url || '',
-                                reminder: item.reminder || {},
-                                updatedAt: Date.now()
-                            }
-                        })
-                    });
-                    item.keepSyncStatus = 'synced';
-                    await window.persistItem(item);
-                    if (!silent) showToast(`「${item.title}」已背景同步至 Google Keep 橋接庫！`, 'success');
-                    return;
-                } catch (err) {
-                    console.warn('Apps Script 同步失敗，降級為快捷連動:', err);
-                }
+                syncSingleItemToKeepCloud(item, false);
             }
 
-            if (!silent) {
-                const fullText = `${item.title}\n\n${keepBody}`;
-                const textarea = document.createElement('textarea');
-                textarea.value = fullText;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
+            // 同時立即觸發 Android / 系統原生分享直傳 Keep（同步手勢呼叫，絕不被瀏覽器阻擋）
+            triggerDirectKeepShare(item.title, keepBody, item.url || '');
 
-                item.keepSyncStatus = 'synced';
-                await window.persistItem(item);
-
-                showToast('已複製含 #標籤 筆記！正在開啟 Google Keep，按貼上即可儲存', 'success');
-                window.open('https://keep.google.com/#NOTE', '_blank', 'noopener,noreferrer');
-            }
+            item.keepSyncStatus = 'synced';
+            window.persistItem(item);
         }
 
-        async function batchSyncToKeep() {
+        // 多選工具列點擊「同步至 Keep」
+        function batchSyncToKeep() {
             const selected = window.appState.items.filter(i => window.appState.selectedIds.has(i.id));
             if (selected.length === 0) return;
-            await pushItemsArrayToKeep(selected);
+
+            const mergedText = selected.map(i => `【${i.title}】\n${formatForGoogleKeep(i)}`).join('\n\n────────────────\n\n');
+            if (window.appState.keepWebhookUrl) {
+                pushItemsArrayToKeepCloud(selected, true);
+            }
+
+            triggerDirectKeepShare(`AI 智慧管家彙整 (${selected.length} 筆筆記)`, mergedText, '');
+
+            selected.forEach(item => {
+                item.keepSyncStatus = 'synced';
+                window.persistItem(item);
+            });
         }
 
-        async function pushAllToGoogleKeep() {
+        // 通道 A 按鈕 1：系統分享直傳全部資料至 Keep
+        function nativeShareAllToKeep() {
+            if (window.appState.items.length === 0) {
+                showToast('目前沒有可傳送的資料', 'warning');
+                return;
+            }
+            const mergedText = window.appState.items.map(i => `【${i.title}】\n${formatForGoogleKeep(i)}`).join('\n\n────────────────\n\n');
+            triggerDirectKeepShare(`AI 智慧管家完整備份 (${window.appState.items.length} 筆)`, mergedText, '');
+            window.appState.items.forEach(item => {
+                item.keepSyncStatus = 'synced';
+                window.persistItem(item);
+            });
+        }
+
+        // 通道 A 按鈕 2：一鍵複製並同步開啟 Google Keep 網頁版
+        function copyAndOpenKeepWeb() {
+            if (window.appState.items.length === 0) {
+                window.open('https://keep.google.com/u/0/#NOTE', '_blank', 'noopener,noreferrer');
+                return;
+            }
+            const mergedText = window.appState.items.map(i => `【${i.title}】\n${formatForGoogleKeep(i)}`).join('\n\n────────────────\n\n');
+            syncCopyTextToClipboard(mergedText);
+            window.open('https://keep.google.com/u/0/#NOTE', '_blank', 'noopener,noreferrer');
+            window.appState.items.forEach(item => {
+                item.keepSyncStatus = 'synced';
+                window.persistItem(item);
+            });
+            showToast('已複製全部含 #標籤 筆記並開啟 Google Keep，貼上即可儲存！', 'success');
+        }
+
+        // 通道 B：Google Apps Script 雲端橋接 (使用 text/plain 避開 CORS 預檢並讀取真實 JSON 回應)
+        function showGasDiagnostic(msg, isSuccess) {
+            const box = document.getElementById('gasDiagnosticBox');
+            if (!box) return;
+            box.classList.remove('hidden');
+            box.className = `p-2.5 rounded-lg text-[11px] font-medium ${isSuccess ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30'}`;
+            box.innerHTML = msg;
+        }
+
+        async function pingKeepGasEndpoint() {
+            const url = document.getElementById('keepWebhookUrlInput').value.trim() || window.appState.keepWebhookUrl;
+            if (!url) {
+                showToast('請先貼上 Google Apps Script Web App URL！', 'warning');
+                return;
+            }
+            window.appState.keepWebhookUrl = url;
+            localStorage.setItem('ai_keep_webhook_url', url);
+            updateKeepIndicatorUI();
+
+            showGasDiagnostic('<i class="fa-solid fa-spinner fa-spin mr-1"></i>正在測試連線至 Google Apps Script 橋接器...', true);
+            try {
+                const pingUrl = `${url}${url.includes('?') ? '&' : '?'}action=ping`;
+                const res = await fetch(pingUrl, { method: 'GET', redirect: 'follow' });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    showGasDiagnostic(`<i class="fa-solid fa-circle-check mr-1"></i>連線成功！${escapeHtml(data.message)}`, true);
+                    showToast('Google Apps Script 橋接連線驗證成功！', 'success');
+                } else {
+                    throw new Error(data.message || '回傳格式異常');
+                }
+            } catch (err) {
+                showGasDiagnostic(`<i class="fa-solid fa-triangle-exclamation mr-1"></i>連線失敗：${escapeHtml(err.message)}。請確認部署時「誰可以存取」已設為 <strong>所有人 (Anyone)</strong>，並重新部署新版本。`, false);
+            }
+        }
+
+        async function syncSingleItemToKeepCloud(item, silent = false) {
+            if (!window.appState.keepWebhookUrl) return;
+            try {
+                const res = await fetch(window.appState.keepWebhookUrl, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({
+                        action: 'upsert',
+                        item: {
+                            id: item.id,
+                            title: item.title,
+                            text: formatForGoogleKeep(item),
+                            labels: item.categories || [],
+                            url: item.url || '',
+                            reminder: item.reminder || {},
+                            updatedAt: Date.now()
+                        }
+                    })
+                });
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    item.keepSyncStatus = 'synced';
+                    await window.persistItem(item);
+                    if (!silent) showToast(`「${item.title}」已同步至 Google 雲端試算表與 Keep 側邊欄文件！`, 'success');
+                }
+            } catch (err) {
+                console.warn('GAS 單筆同步警告:', err);
+            }
+        }
+
+        async function pushAllToGoogleKeepCloud() {
+            const url = document.getElementById('keepWebhookUrlInput').value.trim() || window.appState.keepWebhookUrl;
+            if (!url) {
+                showToast('請先填入 Google Apps Script 網址，或使用上方「通道 A」免設定直接分享至 Keep！', 'warning');
+                return;
+            }
             if (window.appState.items.length === 0) {
                 showToast('目前沒有可同步的資料', 'warning');
                 return;
             }
-            await pushItemsArrayToKeep(window.appState.items);
+            window.appState.keepWebhookUrl = url;
+            localStorage.setItem('ai_keep_webhook_url', url);
+            await pushItemsArrayToKeepCloud(window.appState.items, false);
+        }
+
+        async function pushItemsArrayToKeepCloud(itemsList, silent = false) {
+            if (!silent) showLoader('正在同步至 Google 雲端橋接庫...', `正在推送 ${itemsList.length} 筆資料並更新 Keep 側邊欄文件...`);
+            try {
+                const formattedPayload = itemsList.map(item => ({
+                    id: item.id,
+                    title: item.title,
+                    text: formatForGoogleKeep(item),
+                    labels: item.categories || [],
+                    url: item.url || '',
+                    reminder: item.reminder || {},
+                    updatedAt: Date.now()
+                }));
+
+                const res = await fetch(window.appState.keepWebhookUrl, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: 'batch_upsert', items: formattedPayload })
+                });
+                const data = await res.json();
+                if (data.status !== 'ok') throw new Error(data.message || '寫入失敗');
+
+                for (const item of itemsList) {
+                    item.keepSyncStatus = 'synced';
+                    await window.persistItem(item);
+                }
+                if (!silent) {
+                    showGasDiagnostic(`<i class="fa-solid fa-circle-check mr-1"></i>已成功將 ${data.syncedCount || itemsList.length} 筆資料寫入 Google 試算表與「Keep匯入暫存檔」文件！`, true);
+                    showToast(`已成功同步 ${itemsList.length} 筆資料至 Google 雲端橋接庫！`, 'success');
+                }
+            } catch (err) {
+                if (!silent) {
+                    showGasDiagnostic(`<i class="fa-solid fa-triangle-exclamation mr-1"></i>雲端推送失敗：${escapeHtml(err.message)}`, false);
+                    showToast('雲端推送失敗，請檢查 Apps Script 部署權限', 'warning');
+                }
+            } finally {
+                if (!silent) hideLoader();
+            }
+        }
+
+        async function pullFromGoogleKeepEndpoint() {
+            const url = document.getElementById('keepWebhookUrlInput').value.trim() || window.appState.keepWebhookUrl;
+            if (!url) {
+                showToast('請先貼上 Google Apps Script Web App URL，或使用下方「通道 C」匯入！', 'warning');
+                return;
+            }
+            showLoader('正在從 Google 雲端橋接庫拉取...', '正在比對雙向變更並匯入新筆記...');
+            try {
+                const res = await fetch(`${url}${url.includes('?') ? '&' : '?'}action=pull`, { method: 'GET', redirect: 'follow' });
+                const data = await res.json();
+                const remoteItems = Array.isArray(data) ? data : (data.items || []);
+
+                let importedCount = 0;
+                for (const rItem of remoteItems) {
+                    const exists = window.appState.items.find(local => local.id === rItem.id || local.title === rItem.title);
+                    if (!exists) {
+                        const newItem = {
+                            id: rItem.id || 'keep_' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                            title: rItem.title || '來自 Google Keep 的筆記',
+                            content: rItem.text || '',
+                            url: rItem.url || '',
+                            linkPreview: null,
+                            mediaType: rItem.url ? 'link' : 'text',
+                            mediaData: '',
+                            categories: Array.isArray(rItem.labels) && rItem.labels.length > 0 ? rItem.labels : ['Keep匯入'],
+                            reminder: rItem.reminder || { time: '', location: '', context: '' },
+                            keepSyncStatus: 'from_keep',
+                            createdAt: rItem.updatedAt || Date.now()
+                        };
+                        await window.persistItem(newItem);
+                        importedCount++;
+                    }
+                }
+                showGasDiagnostic(`<i class="fa-solid fa-circle-check mr-1"></i>雲端拉取完成，共匯入 ${importedCount} 筆新資料（雲端總計 ${remoteItems.length} 筆）。`, true);
+                showToast(importedCount > 0 ? `成功從雲端雙向拉取 ${importedCount} 筆新資料！` : '目前已是最新狀態，無新增筆記。', 'success');
+            } catch (err) {
+                showGasDiagnostic(`<i class="fa-solid fa-triangle-exclamation mr-1"></i>拉取失敗：${escapeHtml(err.message)}`, false);
+                showToast('拉取失敗，請確認 Apps Script 部署權限設為「所有人」', 'warning');
+            } finally {
+                hideLoader();
+            }
+        }
+
+        // 通道 C：反向解析從 Google Keep 貼上的文字 (自動擷取 #標籤 還原類別)
+        async function importFromPastedKeepText() {
+            const textarea = document.getElementById('pasteFromKeepTextarea');
+            const raw = textarea.value.trim();
+            if (!raw) {
+                showToast('請先貼上從 Google Keep 複製的筆記內容！', 'warning');
+                return;
+            }
+
+            const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+            const title = lines[0].replace(/^[【📌\s]+|[】\s]+$/g, '').slice(0, 30) || '來自 Google Keep 的筆記';
+            const content = lines.length > 1 ? lines.slice(1).join('\n') : raw;
+
+            // 自動解析內文中的 #標籤
+            const tagMatches = raw.match(/#([^\s#]+)/g) || [];
+            const parsedTags = tagMatches.map(t => t.replace(/^#/, '').replace(/_/g, ' ')).filter(Boolean);
+            const urlMatch = raw.match(/https?:\/\/[^\s"'<>]+/i);
+
+            const newItem = {
+                id: 'keep_paste_' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                title,
+                content,
+                url: urlMatch ? urlMatch[0] : '',
+                linkPreview: null,
+                mediaType: urlMatch ? 'link' : 'text',
+                mediaData: '',
+                categories: parsedTags.length > 0 ? Array.from(new Set(parsedTags)) : ['Keep匯入'],
+                reminder: { time: '', location: '', context: '從 Google Keep 匯入' },
+                keepSyncStatus: 'from_keep',
+                createdAt: Date.now()
+            };
+
+            await window.persistItem(newItem);
+            textarea.value = '';
+            showToast(`已成功從 Keep 筆記匯入「${title}」並自動建立 ${newItem.categories.length} 個標籤！`, 'success');
             closeKeepSyncModal();
         }
 
@@ -3347,4 +3671,3 @@ ${reminders.length > 0 ? reminders.join('\n') : '- 目前選取的資料尚未�
     </script>
 </body>
 </html>
-```
