@@ -1,189 +1,2582 @@
-<!doctype html>
-<html lang="zh-TW" data-t="pro">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0e6f7a">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
-<title>收納匣</title>
-<style>
-:root{--bg:#eef1f4;--ink:#17212b;--mut:#5d6b78;--card:#fff;--ac:#0e6f7a;--on:#fff;--s:28%;--l:40%;--r:12px;--ln:#d9dfe5}
-[data-t=fun]{--bg:#fff1d0;--ink:#2a1a3d;--mut:#7a6490;--card:#fffdf6;--ac:#e0457b;--s:88%;--l:54%;--r:24px;--ln:#f1d9a6}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;padding:env(safe-area-inset-top) 0 140px}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 16px 6px}
-h1{margin:0;font-size:30px;font-weight:800;letter-spacing:.08em}
-button,input,textarea{font:inherit;color:inherit}
-button{border:0;background:var(--card);border-radius:999px;padding:8px 14px;border:1px solid var(--ln);cursor:pointer}
-header button{margin-left:6px}
-.p{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}
-input,textarea{width:100%;border:1px solid var(--ln);background:var(--card);border-radius:var(--r);padding:11px 14px;margin:4px 0}
-#q{width:calc(100% - 32px);margin:8px 16px}
-nav{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 10px;scrollbar-width:none}
-nav button{white-space:nowrap}
-nav button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-main{padding:0 16px;display:grid;gap:12px}
-.cd{display:flex;background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--ln);position:relative}
-.cd:before{content:"";width:9px;background:var(--st);flex:none}
-.cd.on{outline:3px solid var(--ac)}
-.ck{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--mut);margin:14px 0 0 12px}
-.cd.on .ck{background:var(--ac);border-color:var(--ac);box-shadow:inset 0 0 0 4px var(--card)}
-.bd{padding:12px 14px;min-width:0;flex:1}
-.bd p{margin:4px 0 8px;white-space:pre-wrap;word-break:break-word;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-.bd img,.bd video{width:100%;max-height:280px;object-fit:cover;border-radius:calc(var(--r) - 4px)}
-.tg{display:flex;flex-wrap:wrap;gap:6px}
-.tg span,.ch{--c:hsl(var(--h) var(--s) var(--l));background:hsl(var(--h) var(--s) var(--l)/.15);color:hsl(var(--h) var(--s) 26%);border-radius:999px;padding:2px 11px;font-size:14px;border:1px solid transparent}
-.ch.on{background:var(--c);color:#fff}
-.rm{font-size:14px;color:var(--mut);margin-top:6px}
-.emp{text-align:center;color:var(--mut);padding:60px 20px}
-#fab{position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom));width:62px;height:62px;border-radius:50%;font-size:34px;line-height:1;padding:0;box-shadow:0 6px 18px #0004}
-#bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--ln);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:grid;gap:8px;z-index:5}
-#bar[hidden]{display:none}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.row>*{flex:1}
-dialog{width:min(560px,100%);max-height:92vh;border:0;border-radius:24px 24px 0 0;padding:18px;background:var(--bg);color:var(--ink);margin:auto auto 0}
-dialog::backdrop{background:#0008}
-h2{margin:0 0 8px}h3{margin:14px 0 6px;font-size:16px}
-small,.mut{color:var(--mut);font-weight:400}
-#cc{display:flex;flex-wrap:wrap;gap:8px}
-#pv img,#pv video{width:100%;max-height:220px;object-fit:cover;border-radius:var(--r)}
-#tx{min-height:110px}
-#ao{white-space:pre-wrap;word-break:break-word;max-height:60vh;overflow:auto}
-#tt{position:fixed;left:50%;top:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%}
-#tt.on{opacity:1}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智慧多媒體知識與靈感管家</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans TC & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #f1f5f9;
+            --bg-surface: #ffffff;
+            --bg-surface-secondary: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --primary: #1e3a8a;
+            --primary-hover: #172554;
+            --primary-light: #dbeafe;
+            --primary-text: #1e40af;
+            --accent: #0284c7;
+            --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+            --header-bg: rgba(255, 255, 255, 0.88);
+            --gradient-banner: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        }
+
+        /* 主題 1: 專業商務藍 (預設) */
+        [data-theme="navy"] {
+            --bg-main: #f1f5f9;
+            --bg-surface: #ffffff;
+            --bg-surface-secondary: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --primary: #1e3a8a;
+            --primary-hover: #172554;
+            --primary-light: #dbeafe;
+            --primary-text: #1e40af;
+            --accent: #0284c7;
+            --card-shadow: 0 4px 12px -2px rgba(30, 58, 138, 0.08);
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --gradient-banner: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);
+        }
+
+        /* 主題 2: 繽紛活力彩 */
+        [data-theme="vibrant"] {
+            --bg-main: #fff7ed;
+            --bg-surface: #ffffff;
+            --bg-surface-secondary: #ffedd5;
+            --text-primary: #292524;
+            --text-secondary: #57534e;
+            --text-muted: #a8a29e;
+            --border-color: #fed7aa;
+            --primary: #f97316;
+            --primary-hover: #ea580c;
+            --primary-light: #ffedd5;
+            --primary-text: #c2410c;
+            --accent: #10b981;
+            --card-shadow: 0 6px 16px -3px rgba(249, 115, 22, 0.12);
+            --header-bg: rgba(255, 255, 255, 0.92);
+            --gradient-banner: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #10b981 100%);
+        }
+
+        /* 主題 3: 極簡暗夜黑 */
+        [data-theme="dark"] {
+            --bg-main: #09090b;
+            --bg-surface: #18181b;
+            --bg-surface-secondary: #27272a;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border-color: #27272a;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-light: rgba(99, 102, 241, 0.18);
+            --primary-text: #a5b4fc;
+            --accent: #a855f7;
+            --card-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.6);
+            --header-bg: rgba(24, 24, 27, 0.88);
+            --gradient-banner: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-surface {
+            background-color: var(--bg-surface);
+            border-color: var(--border-color);
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .theme-surface-secondary {
+            background-color: var(--bg-surface-secondary);
+            border-color: var(--border-color);
+        }
+
+        .theme-text-primary { color: var(--text-primary); }
+        .theme-text-secondary { color: var(--text-secondary); }
+        .theme-text-muted { color: var(--text-muted); }
+        .theme-border { border-color: var(--border-color); }
+
+        .theme-btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .theme-btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .theme-badge {
+            background-color: var(--primary-light);
+            color: var(--primary-text);
+        }
+
+        .theme-banner {
+            background: var(--gradient-banner);
+        }
+
+        /* 動態自適應版面配置 (Dynamic Adaptive Grid) */
+        .adaptive-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            grid-auto-flow: dense;
+            gap: 1.25rem;
+            align-items: start;
+        }
+        @media (min-width: 640px) {
+            .adaptive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 1024px) {
+            .adaptive-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        @media (min-width: 1280px) {
+            .adaptive-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+
+        /* 依內容與版面密度調整跨欄 */
+        .adaptive-grid[data-density="adaptive"] .card-span-wide {
+            grid-column: span 1;
+        }
+        @media (min-width: 640px) {
+            .adaptive-grid[data-density="adaptive"] .card-span-wide {
+                grid-column: span 2;
+            }
+        }
+        .adaptive-grid[data-density="spacious"] {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        @media (min-width: 768px) {
+            .adaptive-grid[data-density="spacious"] {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .adaptive-grid[data-density="compact"] .card-span-wide {
+            grid-column: span 1 !important;
+        }
+
+        .adaptive-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        /* 自訂捲軸 */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.4); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(156, 163, 175, 0.7); }
+
+        /* Markdown 樣式 */
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 { font-weight: 700; margin-top: 1em; margin-bottom: 0.5em; }
+        .markdown-body h2 { font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.25rem; }
+        .markdown-body h3 { font-size: 1.05rem; }
+        .markdown-body p { margin-bottom: 0.75em; line-height: 1.65; }
+        .markdown-body ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 0.75em; }
+        .markdown-body ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 0.75em; }
+        .markdown-body li { margin-bottom: 0.25em; }
+        .markdown-body strong { color: var(--primary-text); font-weight: 600; }
+        .markdown-body code { background-color: var(--bg-surface-secondary); padding: 0.15em 0.35em; border-radius: 0.25rem; font-size: 0.875em; }
+        .markdown-body blockquote { border-left: 3px solid var(--primary); padding-left: 0.75rem; opacity: 0.85; font-style: italic; }
+
+        /* 動畫 */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0); }
+        }
+        .ai-glow { animation: pulseGlow 2s infinite; }
+    </style>
 </head>
-<body>
-<header><h1>收納匣</h1><div><button id="th">換主題</button><button id="gs">設定</button></div></header>
-<input id="q" type="search" placeholder="搜尋內容、類別、地點、情境…">
-<nav id="fl"></nav>
-<main id="ls"></main>
-<button id="fab" class="p" aria-label="新增">＋</button>
+            <!-- 右側控制區：主題切換 + Keep 雙向整合 + 快速功能 -->
+            <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                <!-- 版面密度切換器 -->
+                <div class="flex items-center p-1 rounded-xl theme-surface-secondary border theme-border" title="依內容調整顯示區域大小">
+                    <button onclick="setLayoutDensity('adaptive')" data-density-btn="adaptive" class="density-btn px-2 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-all" title="依內容自動調整大小">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                        <span class="hidden lg:inline">自適應</span>
+                    </button>
+                    <button onclick="setLayoutDensity('compact')" data-density-btn="compact" class="density-btn px-2 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-all" title="緊湊等寬網格">
+                        <i class="fa-solid fa-grip"></i>
+                        <span class="hidden lg:inline">緊湊</span>
+                    </button>
+                    <button onclick="setLayoutDensity('spacious')" data-density-btn="spacious" class="density-btn px-2 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 transition-all" title="寬敞閱讀視圖">
+                        <i class="fa-solid fa-rectangle-list"></i>
+                        <span class="hidden lg:inline">寬敞</span>
+                    </button>
+                </div>
 
-<div id="bar" hidden>
-  <div class="row"><input id="qa" placeholder="針對已選資料提問…"><button id="ask" class="p" style="flex:none">詢問 AI</button></div>
-  <div class="row"><span id="cnt" class="mut"></span><button id="sh">分享</button><button id="all">全選</button><button id="del">刪除</button><button id="clr">取消</button></div>
-</div>
+                <!-- Google Keep 雙向同步中心按鈕 -->
+                <button onclick="openKeepSyncModal()" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 transition flex items-center gap-1.5" title="Google Keep 雙向整合與同步設定">
+                    <i class="fa-regular fa-lightbulb text-amber-500"></i>
+                    <span class="hidden sm:inline">Keep 同步</span>
+                    <span id="keepSyncIndicatorDot" class="w-2 h-2 rounded-full bg-slate-400"></span>
+                </button>
 
-<dialog id="ed">
-  <h2 id="et">新增資料</h2>
-  <textarea id="tx" placeholder="貼上或輸入文字、網址、想法…（也可直接貼上圖片）"></textarea>
-  <div id="pv"></div>
-  <div class="row" style="margin-top:6px"><button id="pk" type="button">加入圖片／影片／檔案</button><input id="fi" type="file" hidden></div>
-  <h3>類別 <small id="hint">可複選</small></h3>
-  <div id="cc"></div>
-  <h3>要提醒你嗎？</h3>
-  <p class="mut" style="margin:0">告訴我何時、何地或什麼情境需要再看到這則資料，可留空。</p>
-  <input id="rw" type="datetime-local" aria-label="提醒時間">
-  <input id="rp" placeholder="地點，例如：公司、超市">
-  <input id="rc" placeholder="情境，例如：開會前、通勤時">
-  <div class="row" style="margin-top:12px"><button id="sv" class="p">儲存</button><button id="dl">刪除</button><button id="cx">取消</button></div>
-</dialog>
+                <!-- 主題配色切換器 -->
+                <div class="flex items-center p-1 rounded-xl theme-surface-secondary border theme-border" title="切換介面配色主題">
+                    <button onclick="setTheme('navy')" data-theme-btn="navy" class="theme-switcher-btn px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all" title="專業商務藍">
+                        <span class="w-3 h-3 rounded-full bg-[#1e3a8a] border border-white/50"></span>
+                        <span class="hidden md:inline">商務藍</span>
+                    </button>
+                    <button onclick="setTheme('vibrant')" data-theme-btn="vibrant" class="theme-switcher-btn px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all" title="繽紛活力彩">
+                        <span class="w-3 h-3 rounded-full bg-gradient-to-tr from-orange-500 to-emerald-400 border border-white/50"></span>
+                        <span class="hidden md:inline">活力彩</span>
+                    </button>
+                    <button onclick="setTheme('dark')" data-theme-btn="dark" class="theme-switcher-btn px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all" title="極簡暗夜黑">
+                        <span class="w-3 h-3 rounded-full bg-zinc-900 border border-indigo-400"></span>
+                        <span class="hidden md:inline">暗夜黑</span>
+                    </button>
+                </div>
 
-<dialog id="st">
-  <h2>設定</h2>
-  <p class="mut">AI 歸類與提問使用你自己的 Gemini API Key，只保存在這支手機的瀏覽器中。</p>
-  <input id="gk" type="password" placeholder="Gemini API Key" autocomplete="off">
-  <input id="gm" placeholder="模型名稱（預設 gemini-2.5-flash）">
-  <div class="row" style="margin-top:12px"><button id="ss" class="p">儲存</button><button id="sc">關閉</button></div>
-</dialog>
+                <!-- 載入範例按鈕 -->
+                <button onclick="loadDemoData()" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-medium theme-surface border theme-border theme-text-primary hover:opacity-80 transition flex items-center gap-1.5" title="一鍵載入多樣化範例資料">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>
+                    <span class="hidden sm:inline">載入範例</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<dialog id="an">
-  <h2>AI 分析</h2><div id="ao"></div>
-  <div class="row" style="margin-top:12px"><button id="ac2">複製</button><button id="as">分享</button><button id="ax" class="p">關閉</button></div>
-</dialog>
-<div id="tt"></div>
+    <!-- 主內容區 -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
 
-<script>
-const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const CATS=[['工作','會議|專案|客戶|報告|合約|簡報|主管|meeting|deadline'],['財務','發票|帳單|股|投資|報價|預算|營收|匯率|元|\\$'],['健康','醫|藥|運動|睡眠|飲食|健檢|症'],['學習','論文|課程|筆記|研究|教學|study'],['待辦','記得|待辦|提醒|明天|下週|截止|todo'],['生活','家人|朋友|餐|聚會|生日'],['旅遊','機票|飯店|行程|旅|景點|訂房'],['購物','購買|訂單|優惠|折扣|商品'],['靈感','想法|點子|靈感|idea'],['連結','https?:|www\\.'],['圖片',''],['影片',''],['檔案',''],['其他','']];
-const custom=()=>JSON.parse(localStorage.cu||'[]'),allCats=()=>[...CATS.map(c=>c[0]),...custom()],hue=c=>(allCats().indexOf(c)*47)%360;
-let items=[],sel=new Set(),flt='',d=null,tm,asked='';
-/* ---- storage ---- */
-const DB=new Promise((ok,no)=>{const r=indexedDB.open('box',1);r.onupgradeneeded=()=>r.result.createObjectStore('items',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=no});
-const tx=async(m,f)=>{const db=await DB;return new Promise((ok,no)=>{const t=db.transaction('items',m),q=f(t.objectStore('items'));t.oncomplete=()=>ok(q&&q.result);t.onerror=no})};
-const put=i=>tx('readwrite',s=>s.put(i)),rm=id=>tx('readwrite',s=>s.delete(id));
-async function load(){items=(await tx('readonly',s=>s.getAll())).sort((a,b)=>b.upd-a.upd);draw()}
-/* ---- ui ---- */
-function toast(t){const e=$('#tt');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2600)}
-const U=new Map(),url=i=>{const k=i.id+i.upd;if(!U.has(k))U.set(k,URL.createObjectURL(i.blob));return U.get(k)};
-const media=i=>!i.blob?'':i.blob.type.startsWith('image')?`<img src="${url(i)}" alt="">`:i.blob.type.startsWith('video')?`<video src="${url(i)}" controls preload="metadata"></video>`:`<p>📎 ${esc(i.fname)}</p>`;
-const rtxt=i=>[i.rw&&new Date(i.rw).toLocaleString('zh-TW',{hour12:false}),i.rp&&'地點：'+i.rp,i.rc&&'情境：'+i.rc].filter(Boolean).join('　');
-function draw(){
-  const q=$('#q').value.trim().toLowerCase();
-  const used=[...new Set(items.flatMap(i=>i.cats))];
-  $('#fl').innerHTML=['全部',...used].map(c=>`<button class="${(flt||'全部')==c?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
-  const list=items.filter(i=>(!flt||i.cats.includes(flt))&&(!q||[i.text,i.fname,i.cats.join(),i.rp,i.rc].join(' ').toLowerCase().includes(q)));
-  $('#ls').innerHTML=list.map(i=>{const n=i.cats.length||1,st=i.cats.map((c,k)=>`hsl(${hue(c)} var(--s) var(--l)) ${k*100/n}% ${(k+1)*100/n}%`).join(',')||'var(--ln)';
-    return `<article class="cd ${sel.has(i.id)?'on':''}" data-id="${i.id}" style="--st:linear-gradient(${st})"><i class="ck"></i><div class="bd">${media(i)}<p>${esc(i.text||(i.blob?'':'（空白）'))}</p><div class="tg">${i.cats.map(c=>`<span style="--h:${hue(c)}">${esc(c)}</span>`).join('')}</div>${rtxt(i)?`<div class="rm">⏰ ${esc(rtxt(i))}</div>`:''}</div></article>`}).join('')||`<div class="emp">${items.length?'沒有符合的資料':'還沒有資料。點右下角「＋」，貼上文字、圖片或影片就能開始。'}</div>`;
-  $('#bar').hidden=!sel.size;$('#cnt').textContent=`已選 ${sel.size} 項`;
+        <!-- 全功能快速輸入框 (支援貼上文字、網址、圖片 Ctrl+V、上傳檔案) -->
+        <section class="theme-surface rounded-2xl border p-4 sm:p-5 relative overflow-hidden">
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-semibold theme-text-primary flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle" style="color: var(--primary);"></i>
+                        新增或直接貼上靈感資料（支援文字、連結、圖片 <kbd class="px-1.5 py-0.5 text-xs rounded theme-surface-secondary border theme-border">Ctrl+V</kbd>、影片）
+                    </span>
+                    <span class="text-xs theme-text-muted hidden sm:inline">送出後將由 Gemini AI 自動判斷歸類並設定提醒</span>
+                </div>
+
+                <!-- 文字輸入區 -->
+                <textarea id="quickInputText" rows="3" oninput="handleQuickTextChange()" placeholder="在此輸入筆記、貼上網址（自動擷取網頁預覽圖與標題）、或直接按 Ctrl+V 貼上剪貼簿圖片..." class="w-full rounded-xl p-3.5 text-sm theme-surface-secondary border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500/50 resize-y transition"></textarea>
+
+                <!-- 網址豐富預覽卡片 (Rich Link Preview in Input) -->
+                <div id="inputLinkPreviewBox" class="hidden rounded-xl theme-surface-secondary border theme-border overflow-hidden transition-all">
+                    <div id="linkPreviewLoading" class="hidden p-3.5 flex items-center gap-2.5 text-xs theme-text-secondary">
+                        <i class="fa-solid fa-circle-notch fa-spin text-sky-500"></i>
+                        <span>正在自動擷取網頁標題、摘要與預覽大圖...</span>
+                    </div>
+                    <div id="linkPreviewContent" class="hidden flex flex-col sm:flex-row items-stretch justify-between">
+                        <div class="flex flex-col sm:flex-row items-stretch flex-1 min-w-0">
+                            <div id="linkPreviewImageWrap" class="sm:w-44 h-32 sm:h-auto bg-black/10 flex-shrink-0 overflow-hidden hidden">
+                                <img id="linkPreviewImg" src="" alt="網頁預覽圖" class="w-full h-full object-cover" onerror="this.parentElement.classList.add('hidden')">
+                            </div>
+                            <div class="p-3.5 flex-1 min-w-0 flex flex-col justify-center">
+                                <div class="flex items-center gap-1.5 text-[11px] theme-text-muted mb-1">
+                                    <img id="linkPreviewFavicon" src="" class="w-3.5 h-3.5 rounded-xs hidden" onerror="this.classList.add('hidden')">
+                                    <span id="linkPreviewDomain" class="truncate font-medium"></span>
+                                </div>
+                                <p id="linkPreviewTitle" class="text-sm font-bold theme-text-primary line-clamp-1 mb-1"></p>
+                                <p id="linkPreviewDesc" class="text-xs theme-text-secondary line-clamp-2"></p>
+                            </div>
+                        </div>
+                        <div class="p-2 flex sm:flex-col items-center justify-end gap-1 border-t sm:border-t-0 sm:border-l theme-border">
+                            <button type="button" onclick="clearLinkPreview()" class="p-2 rounded-lg text-rose-500 hover:bg-rose-500/10 transition text-xs" title="移除網頁預覽">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 媒體預覽區 (圖片或影片) -->
+                <div id="inputMediaPreview" class="hidden flex-wrap gap-3 p-3 rounded-xl theme-surface-secondary border theme-border items-center justify-between">
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div id="previewThumbnailContainer" class="w-16 h-16 rounded-lg overflow-hidden bg-black/10 flex-shrink-0 flex items-center justify-center"></div>
+                        <div class="min-w-0">
+                            <p id="previewMediaName" class="text-sm font-medium theme-text-primary truncate">已附加媒體檔案</p>
+                            <p id="previewMediaMeta" class="text-xs theme-text-secondary">準備進行 AI 視覺與內容解析</p>
+                        </div>
+                    </div>
+                    <button onclick="clearInputMedia()" class="p-2 rounded-lg text-rose-500 hover:bg-rose-500/10 transition text-sm" title="移除媒體">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+
+                <!-- 網址或影片連結快速輸入欄 (可展開) -->
+                <div id="urlInputRow" class="hidden flex items-center gap-2">
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-link absolute left-3.5 top-1/2 -translate-y-1/2 text-xs theme-text-muted"></i>
+                        <input type="url" id="quickInputUrl" oninput="handleQuickUrlInput()" placeholder="貼上外部網址或 YouTube / 影片連結 (https://...) 自動擷取預覽圖" class="w-full pl-9 pr-3 py-2 rounded-xl text-sm theme-surface-secondary border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+                    </div>
+                    <button onclick="toggleUrlInput()" class="p-2 text-xs theme-text-muted hover:theme-text-primary">取消</button>
+                </div>
+
+                <!-- 底部工具列 -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- 上傳圖片 -->
+                        <label class="cursor-pointer px-3 py-2 rounded-xl text-xs font-medium theme-surface-secondary border theme-border theme-text-secondary hover:theme-text-primary transition flex items-center gap-1.5">
+                            <i class="fa-regular fa-image text-emerald-500 text-sm"></i>
+                            <span>上傳圖片</span>
+                            <input type="file" id="imageFileInput" accept="image/*" class="hidden" onchange="handleFileUpload(event, 'image')">
+                        </label>
+
+                        <!-- 上傳影片 -->
+                        <label class="cursor-pointer px-3 py-2 rounded-xl text-xs font-medium theme-surface-secondary border theme-border theme-text-secondary hover:theme-text-primary transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-video text-purple-500 text-sm"></i>
+                            <span>上傳影片</span>
+                            <input type="file" id="videoFileInput" accept="video/*" class="hidden" onchange="handleFileUpload(event, 'video')">
+                        </label>
+
+                        <!-- 附加網址/影片連結 -->
+                        <button type="button" onclick="toggleUrlInput()" class="px-3 py-2 rounded-xl text-xs font-medium theme-surface-secondary border theme-border theme-text-secondary hover:theme-text-primary transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-link text-sky-500 text-sm"></i>
+                            <span>附加連結</span>
+                        </button>
+                    </div>
+
+                    <!-- 送出並 AI 分析按鈕 -->
+                    <button id="submitAnalyzeBtn" onclick="startAddAndAnalyze()" class="theme-btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold shadow-md flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>AI 智慧分析並收納</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜尋、類別篩選與批次選取工具列 -->
+        <section class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <!-- 類別篩選膠囊 -->
+            <div id="categoryFilterBar" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                <!-- 由 JS 動態渲染類別按鈕 -->
+            </div>
+
+            <!-- 搜尋與批次操作 -->
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <div class="relative flex-1 sm:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-xs theme-text-muted"></i>
+                    <input type="text" id="searchInput" oninput="renderCards()" placeholder="搜尋標題、內容、標籤或地點..." class="w-full pl-9 pr-3 py-2 rounded-xl text-sm theme-surface border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+                </div>
+                <button onclick="toggleSelectAll()" id="selectAllBtn" class="px-3 py-2 rounded-xl text-xs font-medium theme-surface border theme-border theme-text-secondary hover:theme-text-primary transition whitespace-nowrap">
+                    <i class="fa-regular fa-square-check mr-1"></i>全選
+                </button>
+            </div>
+        </section>
+
+        <!-- 知識與靈感卡片網格 (動態自適應版面配置) -->
+        <section id="cardsContainer" class="adaptive-grid" data-density="adaptive">
+            <!-- 卡片動態渲染於此 -->
+        </section>
+
+        <!-- 空狀態提示 -->
+        <div id="emptyState" class="hidden theme-surface rounded-2xl border p-12 text-center max-w-lg mx-auto my-8">
+            <div class="w-16 h-16 rounded-2xl theme-badge mx-auto flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <h3 class="text-lg font-bold theme-text-primary mb-2">目前還沒有任何靈感或資料</h3>
+            <p class="text-sm theme-text-secondary mb-6">在上方輸入框貼上任何文字、圖片、影片或網址，AI 將自動為您歸類並建立提醒；或者點擊下方載入預設範例立即體驗！</p>
+            <button onclick="loadDemoData()" class="theme-btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                一鍵載入 4 筆精選範例資料
+            </button>
+        </div>
+
+    </main>
+
+    <!-- 多選懸浮工具列 (當勾選 >= 1 筆資料時出現) -->
+    <div id="multiSelectBar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden transition-all duration-300 w-[92%] max-w-2xl">
+        <div class="theme-surface border-2 border-indigo-500/60 rounded-2xl px-4 py-3 shadow-2xl flex flex-wrap items-center justify-between gap-3 backdrop-blur-xl">
+            <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-full theme-btn-primary text-xs font-bold flex items-center justify-center" id="selectedCountBadge">0</span>
+                <span class="text-sm font-semibold theme-text-primary">筆資料已選取</span>
+                <button onclick="clearSelection()" class="text-xs theme-text-muted hover:text-rose-500 underline ml-1">取消全選</button>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="batchSyncToKeep()" class="px-3 py-2 rounded-xl text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-300 hover:bg-amber-500/25 transition flex items-center gap-1.5">
+                    <i class="fa-regular fa-lightbulb"></i>
+                    <span class="hidden sm:inline">同步至 Keep</span>
+                </button>
+                <button onclick="deleteSelectedItems()" class="px-3 py-2 rounded-xl text-xs font-medium bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-trash"></i>
+                    <span class="hidden sm:inline">批次刪除</span>
+                </button>
+                <button onclick="openAiAnalysisModal()" class="theme-btn-primary ai-glow px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI 跨資料深度問答分析</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 彈窗 1: AI 智慧歸類與情境提醒確認面板 (新增 / 編輯共用) -->
+    <!-- ===================================================================== -->
+    <div id="classifyModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="theme-surface border rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl my-auto">
+            <!-- Modal Header -->
+            <div class="theme-banner px-6 py-4 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                    <div>
+                        <h2 id="classifyModalTitle" class="font-bold text-base sm:text-lg">AI 智慧歸類與情境提醒確認</h2>
+                        <p class="text-xs text-white/80">請確認 AI 建議的複選類別，並設定您希望被提醒的時間、地點或情境</p>
+                    </div>
+                </div>
+                <button onclick="closeClassifyModal()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-5 max-h-[80vh] overflow-y-auto">
+                <!-- 1. 標題與內容摘要 -->
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider theme-text-secondary mb-1">資料標題摘要</label>
+                        <input type="text" id="modalItemTitle" class="w-full px-3.5 py-2.5 rounded-xl text-sm font-medium theme-surface-secondary border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider theme-text-secondary mb-1">詳細內容 / 筆記</label>
+                        <textarea id="modalItemContent" rows="3" class="w-full px-3.5 py-2.5 rounded-xl text-sm theme-surface-secondary border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div id="modalMediaSection" class="hidden">
+                        <label class="block text-xs font-semibold uppercase tracking-wider theme-text-secondary mb-1">附加媒體 / 連結</label>
+                        <div id="modalMediaDisplay" class="p-3 rounded-xl theme-surface-secondary border theme-border text-xs theme-text-secondary"></div>
+                    </div>
+                </div>
+
+                <!-- 2. 複選類別標籤 (AI 推薦 + 自訂) -->
+                <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                            <i class="fa-solid fa-tags" style="color: var(--primary);"></i>
+                            歸類標籤（可複選與修改）
+                        </label>
+                        <span id="aiConfidenceHint" class="text-xs theme-badge px-2 py-0.5 rounded-full font-medium">✨ AI 已自動勾選建議類別</span>
+                    </div>
+
+                    <!-- 類別複選膠囊區 -->
+                    <div id="modalCategoryCheckboxes" class="flex flex-wrap gap-2">
+                        <!-- 動態產生複選標籤 -->
+                    </div>
+
+                    <!-- 新增自訂標籤 -->
+                    <div class="flex items-center gap-2 pt-1">
+                        <input type="text" id="newCustomCategoryInput" placeholder="輸入自訂新標籤（如：Q4預算、設計參考）..." class="flex-1 px-3 py-1.5 rounded-lg text-xs theme-surface border theme-border theme-text-primary focus:outline-none">
+                        <button type="button" onclick="addCustomCategory()" class="px-3 py-1.5 rounded-lg text-xs font-semibold theme-btn-primary">
+                            + 新增標籤
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. 智慧提醒設定 (時間 / 地點 / 情境) -->
+                <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                            <i class="fa-solid fa-bell text-amber-500"></i>
+                            您希望在何時、何地或什麼情境下提醒您？
+                        </label>
+                        <span id="aiReminderSuggestionBadge" class="text-[11px] theme-text-muted hidden sm:inline">AI 已為您預填建議</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <!-- 提醒時間 -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-medium theme-text-secondary flex items-center gap-1.5">
+                                <i class="fa-regular fa-clock text-sky-500"></i> 提醒時間
+                            </label>
+                            <input type="datetime-local" id="modalReminderTime" class="w-full px-3 py-2 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none">
+                            <div class="flex flex-wrap gap-1 pt-0.5">
+                                <button type="button" onclick="setQuickTime('today18')" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">今晚 18:00</button>
+                                <button type="button" onclick="setQuickTime('tomorrow9')" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">明早 09:00</button>
+                            </div>
+                        </div>
+
+                        <!-- 提醒地點 -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-medium theme-text-secondary flex items-center gap-1.5">
+                                <i class="fa-solid fa-location-dot text-rose-500"></i> 提醒地點
+                            </label>
+                            <input type="text" id="modalReminderLocation" placeholder="輸入或選擇地點..." class="w-full px-3 py-2 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none">
+                            <div class="flex flex-wrap gap-1 pt-0.5">
+                                <button type="button" onclick="document.getElementById('modalReminderLocation').value='辦公室'" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">辦公室</button>
+                                <button type="button" onclick="document.getElementById('modalReminderLocation').value='家中'" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">家中</button>
+                                <button type="button" onclick="document.getElementById('modalReminderLocation').value='機場/高鐵'" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">機場</button>
+                            </div>
+                        </div>
+
+                        <!-- 觸發情境 -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-medium theme-text-secondary flex items-center gap-1.5">
+                                <i class="fa-solid fa-bolt text-amber-500"></i> 觸發情境
+                            </label>
+                            <input type="text" id="modalReminderContext" placeholder="輸入或選擇情境..." class="w-full px-3 py-2 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none">
+                            <div class="flex flex-wrap gap-1 pt-0.5">
+                                <button type="button" onclick="document.getElementById('modalReminderContext').value='開會前檢視'" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">開會前</button>
+                                <button type="button" onclick="document.getElementById('modalReminderContext').value='通勤閱讀'" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">通勤時</button>
+                                <button type="button" onclick="document.getElementById('modalReminderContext').value='電腦前處理'" class="text-[11px] px-2 py-0.5 rounded theme-surface border theme-border hover:opacity-80">電腦前</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 theme-surface-secondary border-t theme-border flex flex-wrap items-center justify-between gap-3">
+                <label class="inline-flex items-center gap-2 text-xs font-medium theme-text-secondary cursor-pointer select-none">
+                    <input type="checkbox" id="modalSyncToKeepCheckbox" checked class="w-4 h-4 rounded accent-amber-500">
+                    <i class="fa-regular fa-lightbulb text-amber-500"></i>
+                    <span>儲存時同步更新至 Google Keep（含 #標籤）</span>
+                </label>
+                <div class="flex items-center gap-3 ml-auto">
+                    <button onclick="closeClassifyModal()" class="px-4 py-2 rounded-xl text-sm font-medium theme-surface border theme-border theme-text-secondary hover:theme-text-primary">
+                        取消
+                    </button>
+                    <button onclick="confirmAndSaveItem()" class="theme-btn-primary px-6 py-2 rounded-xl text-sm font-semibold shadow-md flex items-center gap-2">
+                        <i class="fa-solid fa-check"></i>
+                        <span>確認並儲存資料</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 彈窗 4: 圖片/媒體放大預覽燈箱 -->
+    <!-- ===================================================================== -->
+    <div id="lightboxModal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div onclick="event.stopPropagation()" class="relative max-w-4xl max-h-[90vh] flex flex-col items-center">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white/80 hover:text-white text-sm flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full">
+                <i class="fa-solid fa-xmark"></i> 關閉預覽
+            </button>
+            <img id="lightboxImage" src="" alt="放大預覽" class="max-w-full max-h-[82vh] rounded-xl shadow-2xl object-contain">
+            <p id="lightboxCaption" class="text-white/90 text-sm mt-3 font-medium text-center"></p>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 彈窗 5: Google Keep 雙向整合與同步中心 -->
+    <!-- ===================================================================== -->
+    <div id="keepSyncModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="theme-surface border rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl my-auto">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4 text-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                        <i class="fa-regular fa-lightbulb text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-base sm:text-lg">Google Keep 雙向同步整合中心</h2>
+                        <p class="text-xs text-white/90">雙向同步筆記、自動對應 #類別標籤、匯入 Google Keep 備份與 Apps Script 雲端橋接</p>
+                    </div>
+                </div>
+                <button onclick="closeKeepSyncModal()" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 space-y-5 max-h-[80vh] overflow-y-auto">
+                <!-- 1. 雙向同步操作面板 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Push 至 Keep -->
+                    <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-arrow-up text-amber-500"></i> 推送至 Google Keep
+                            </span>
+                            <span id="keepPendingCountBadge" class="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 font-semibold">0 筆待同步</span>
+                        </div>
+                        <p class="text-xs theme-text-secondary">將所有資料與複選類別自動轉為 Google Keep 支援的 <code class="px-1 py-0.5 rounded bg-black/5">#標籤</code> 與提醒格式同步。</p>
+                        <button onclick="pushAllToGoogleKeep()" class="w-full py-2 px-3 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-600 text-white transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-rotate"></i>
+                            <span>立即將全部資料同步至 Keep</span>
+                        </button>
+                    </div>
+
+                    <!-- Pull 從 Keep 匯入 -->
+                    <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-arrow-down text-sky-500"></i> 從 Google Keep 拉取匯入
+                            </span>
+                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 font-semibold">AI 自動補全分類</span>
+                        </div>
+                        <p class="text-xs theme-text-secondary">從雲端橋接端點拉取最新 Keep 筆記，或直接匯入 Google Takeout Keep JSON 檔案。</p>
+                        <div class="flex gap-2">
+                            <button onclick="pullFromGoogleKeepEndpoint()" class="flex-1 py-2 px-3 rounded-xl text-xs font-semibold theme-btn-primary flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-download"></i>
+                                <span>雲端拉取</span>
+                            </button>
+                            <label class="flex-1 py-2 px-3 rounded-xl text-xs font-semibold theme-surface border theme-border theme-text-primary hover:opacity-80 cursor-pointer flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-file-import text-emerald-500"></i>
+                                <span>匯入 JSON</span>
+                                <input type="file" accept=".json" class="hidden" onchange="importGoogleKeepJson(event)">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Google Apps Script 雙向自動化橋接設定 -->
+                <div class="p-4 rounded-xl theme-surface-secondary border theme-border space-y-3">
+                    <div class="flex items-center justify-between">
+                        <label class="text-sm font-bold theme-text-primary flex items-center gap-2">
+                            <i class="fa-solid fa-plug text-emerald-500"></i>
+                            Google Apps Script 雙向同步端點設定（自動背景雙向同步）
+                        </label>
+                        <button type="button" onclick="toggleGasCodeSection()" class="text-xs text-sky-600 dark:text-sky-400 hover:underline font-medium">
+                            檢視/複製橋接腳本 <i class="fa-solid fa-code ml-1"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs theme-text-secondary">
+                        貼上您的 Google Apps Script Web App URL，即可在每次新增/編輯資料時自動雙向同步至 Google Keep（若未填寫，系統仍提供一鍵直開 Google Keep 新增筆記與 #標籤複製連動）。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="url" id="keepWebhookUrlInput" placeholder="https://script.google.com/macros/s/您的腳本ID/exec" class="flex-1 px-3.5 py-2 rounded-xl text-xs theme-surface border theme-border theme-text-primary focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        <button type="button" onclick="saveKeepWebhookConfig()" class="px-4 py-2 rounded-xl text-xs font-semibold theme-btn-primary whitespace-nowrap">
+                            儲存連線設定
+                        </button>
+                    </div>
+
+                    <!-- 可展開的 Google Apps Script 程式碼教學 -->
+                    <div id="gasCodeSection" class="hidden pt-2 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="font-semibold theme-text-primary">部署步驟：前往 script.google.com 新增專案 → 貼上以下程式碼 → 部署為「網頁應用程式（任何人皆可存取）」</span>
+                            <button type="button" onclick="copyGasScript()" class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700">
+                                <i class="fa-regular fa-copy mr-1"></i>複製腳本
+                            </button>
+                        </div>
+                        <pre id="gasScriptCode" class="p-3 rounded-xl bg-slate-900 text-slate-100 text-[11px] overflow-x-auto leading-relaxed font-mono">// Google Apps Script: AI 智慧管家 <-> Google Keep 雙向同步橋接器
+// 將資料同步儲存至 Google Drive 專屬 Keep 同步資料夾與 Google Tasks/Keep 橋接表
+const SYNC_FILE_NAME = 'AI_Knowledge_Keep_Bridge.json';
+
+function doGet(e) {
+  const file = getOrCreateBridgeFile();
+  const content = file.getBlob().getDataAsString() || '[]';
+  return ContentService.createTextOutput(content).setMimeType(ContentService.MimeType.JSON);
 }
-/* ---- classify ---- */
-const b64=b=>new Promise(o=>{const f=new FileReader;f.onload=()=>o(f.result.split(',')[1]);f.readAsDataURL(b)});
-async function ai(parts,sys){const k=localStorage.k;if(!k)throw Error('請先到「設定」輸入 Gemini API Key');
-  const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${localStorage.m||'gemini-2.5-flash'}:generateContent`,{method:'POST',headers:{'content-type':'application/json','x-goog-api-key':k},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}]})});
-  const j=await r.json();if(!r.ok)throw Error(j.error?.message||r.status);return(j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||'').join('')||'（沒有回覆）'}
-async function parts(i){const p=[{text:i.text||'（無文字）'}];if(i.blob&&i.blob.size<9e6)p.push({inlineData:{mimeType:i.blob.type||'application/octet-stream',data:await b64(i.blob)}});return p}
-function local(t,b){const r=CATS.filter(([n,p])=>p&&new RegExp(p,'i').test(t)).map(c=>c[0]);if(b)r.push(b.type.startsWith('image')?'圖片':b.type.startsWith('video')?'影片':'檔案');return r.length?r:['其他']}
-function sched(){clearTimeout(tm);tm=setTimeout(auto,700)}
-async function auto(){if(!d||d.manual)return;let c=local(d.text,d.blob);
-  if(localStorage.k&&(d.text||d.blob)){$('#hint').textContent='AI 歸類中…';
-    try{const o=await ai([...await parts(d),{text:'可用類別：'+allCats().join('、')+'\n請選出所有適用的類別，只回傳 JSON 字串陣列。'}],'你是資料整理助手。');
-      const a=JSON.parse(o.match(/\[[\s\S]*\]/)[0]).filter(x=>allCats().includes(x));if(a.length)c=a}catch(e){}}
-  if(d.manual)return;d.cats=c;chips();$('#hint').textContent='已自動歸類，點選即可修改'}
-function chips(){$('#cc').innerHTML=allCats().map(c=>`<button type="button" class="ch ${d.cats.includes(c)?'on':''}" style="--h:${hue(c)}" data-c="${esc(c)}">${esc(c)}</button>`).join('')+'<button type="button" id="nc">＋ 自訂</button>'}
-/* ---- editor ---- */
-function pv(){$('#pv').innerHTML=d.blob?(d.blob.type.startsWith('image')?`<img src="${URL.createObjectURL(d.blob)}">`:d.blob.type.startsWith('video')?`<video src="${URL.createObjectURL(d.blob)}" controls></video>`:`<p>📎 ${esc(d.fname)}</p>`):''}
-function openEd(i){d=i?{...i,cats:[...i.cats],manual:true}:{id:'i'+Date.now(),text:'',cats:[],manual:false,blob:null};
-  $('#et').textContent=i?'編輯資料':'新增資料';$('#tx').value=d.text||'';$('#rw').value=d.rw||'';$('#rp').value=d.rp||'';$('#rc').value=d.rc||'';$('#dl').hidden=!i;
-  chips();pv();$('#hint').textContent=i?'可複選':'貼上內容後會自動歸類';$('#ed').showModal();if(!i&&d.text)sched()}
-function setBlob(f){d.blob=f;d.fname=f.name||'貼上的檔案';pv();sched()}
-$('#tx').oninput=e=>{d.text=e.target.value;sched()};
-$('#pk').onclick=()=>$('#fi').click();$('#fi').onchange=e=>e.target.files[0]&&setBlob(e.target.files[0]);
-$('#cc').onclick=e=>{const b=e.target.closest('button');if(!b)return;
-  if(b.id=='nc'){const n=(prompt('新類別名稱')||'').trim();if(n&&!allCats().includes(n)){localStorage.cu=JSON.stringify([...custom(),n]);d.cats.push(n);d.manual=true}}
-  else{const c=b.dataset.c;d.cats=d.cats.includes(c)?d.cats.filter(x=>x!=c):[...d.cats,c];d.manual=true}chips()};
-$('#sv').onclick=async()=>{if(!d.text.trim()&&!d.blob)return toast('請先輸入內容或加入檔案');
-  Object.assign(d,{rw:$('#rw').value,rp:$('#rp').value.trim(),rc:$('#rc').value.trim(),upd:Date.now(),fired:0});if(!d.cats.length)d.cats=local(d.text,d.blob);delete d.manual;
-  if(d.rw&&'Notification'in window&&Notification.permission=='default')Notification.requestPermission();
-  await put(d);$('#ed').close();load();toast('已儲存')};
-$('#dl').onclick=async()=>{if(confirm('確定刪除這則資料？')){await rm(d.id);sel.delete(d.id);$('#ed').close();load()}};
-$('#cx').onclick=()=>$('#ed').close();
-document.addEventListener('paste',e=>{if(e.target.matches('input')||$('#st').open||$('#an').open)return;const f=[...(e.clipboardData?.files||[])][0],t=e.clipboardData?.getData('text');
-  if(!$('#ed').open){if(!f&&!t)return;e.preventDefault();openEd();}else if(!f)return;
-  if(f){e.preventDefault();setBlob(f)}if(t&&!$('#tx').value){$('#tx').value=d.text=t;sched()}});
-/* ---- list actions ---- */
-$('#fab').onclick=()=>openEd();
-$('#fl').onclick=e=>{const b=e.target.closest('button');if(b){flt=b.dataset.c=='全部'?'':b.dataset.c;draw()}};
-$('#q').oninput=draw;
-$('#ls').onclick=e=>{const c=e.target.closest('.cd');if(!c)return;const id=c.dataset.id;
-  if(e.target.classList.contains('ck')||sel.size){sel.has(id)?sel.delete(id):sel.add(id);draw()}else openEd(items.find(i=>i.id==id))};
-$('#clr').onclick=()=>{sel.clear();draw()};$('#all').onclick=()=>{items.forEach(i=>sel.add(i.id));draw()};
-$('#del').onclick=async()=>{if(confirm(`刪除已選的 ${sel.size} 項？`)){for(const id of sel)await rm(id);sel.clear();load()}};
-async function share(text,files){const o={title:'收納匣',text};if(files?.length&&navigator.canShare?.({files}))o.files=files;
-  try{if(!navigator.share)throw 0;await navigator.share(o)}catch(e){if(e?.name=='AbortError')return;await navigator.clipboard?.writeText(text);toast('此裝置不支援分享，已複製文字')}}
-$('#sh').onclick=()=>{const l=items.filter(i=>sel.has(i.id));
-  share(l.map(i=>[i.text,rtxt(i)].filter(Boolean).join('\n')).join('\n\n———\n\n'),l.filter(i=>i.blob).map(i=>new File([i.blob],i.fname||'file',{type:i.blob.type})))};
-$('#ask').onclick=async()=>{const q=$('#qa').value.trim();if(!q)return toast('請先輸入問題');
-  const l=items.filter(i=>sel.has(i.id));$('#ao').textContent='AI 分析中…';$('#an').showModal();
-  try{const p=[];for(const [n,i] of l.entries()){p.push({text:`【資料${n+1}】類別：${i.cats.join('、')}${rtxt(i)?'；提醒：'+rtxt(i):''}\n${i.text||''}`});if(i.blob&&i.blob.size<9e6)p.push({inlineData:{mimeType:i.blob.type||'application/octet-stream',data:await b64(i.blob)}})}
-    p.push({text:'問題：'+q});asked=await ai(p,'你是使用者的個人資料分析助手。只根據提供的資料回答，使用繁體中文，條理清楚；資料不足時直接說明。');$('#ao').textContent=asked}
-  catch(e){$('#ao').textContent='失敗：'+e.message}};
-$('#ax').onclick=()=>$('#an').close();$('#ac2').onclick=()=>{navigator.clipboard?.writeText($('#ao').textContent);toast('已複製')};$('#as').onclick=()=>share($('#ao').textContent);
-/* ---- settings / theme ---- */
-const theme=()=>{document.documentElement.dataset.t=localStorage.t||'pro';document.querySelector('meta[name=theme-color]').content=localStorage.t=='fun'?'#e0457b':'#0e6f7a'};
-$('#th').onclick=()=>{localStorage.t=localStorage.t=='fun'?'pro':'fun';theme()};
-$('#gs').onclick=()=>{$('#gk').value=localStorage.k||'';$('#gm').value=localStorage.m||'';$('#st').showModal()};
-$('#ss').onclick=()=>{localStorage.k=$('#gk').value.trim();localStorage.m=$('#gm').value.trim();$('#st').close();toast('設定已儲存')};$('#sc').onclick=()=>$('#st').close();
-/* ---- reminders ---- */
-async function chk(){for(const i of items)if(i.rw&&!i.fired&&new Date(i.rw)<=Date.now()){i.fired=1;await put(i);toast('提醒：'+(i.text||i.fname||'').slice(0,28));
-  if('Notification'in window&&Notification.permission=='granted')navigator.serviceWorker?.ready.then(r=>r.showNotification('收納匣提醒',{body:[i.text||i.fname,i.rp,i.rc].filter(Boolean).join('\n'),icon:'icon-192.png',tag:i.id}))}}
-setInterval(chk,30000);document.addEventListener('visibilitychange',()=>!document.hidden&&chk());
-/* ---- boot ---- */
-theme();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-load().then(()=>{chk();const u=new URLSearchParams(location.search),t=[u.get('title'),u.get('text'),u.get('url')].filter(Boolean).join('\n');
-  if(t){history.replaceState(null,'',location.pathname);openEd();$('#tx').value=d.text=t;sched()}});
-</script>
+
+function doPost(e) {
+  const payload = JSON.parse(e.postData.contents);
+  const file = getOrCreateBridgeFile();
+  let items = JSON.parse(file.getBlob().getDataAsString() || '[]');
+  
+  if (payload.action === 'upsert' && payload.item) {
+    const idx = items.findIndex(i => i.id === payload.item.id);
+    if (idx >= 0) items[idx] = payload.item;
+    else items.unshift(payload.item);
+  } else if (payload.action === 'batch_upsert' && Array.isArray(payload.items)) {
+    payload.items.forEach(newItem => {
+      const idx = items.findIndex(i => i.id === newItem.id);
+      if (idx >= 0) items[idx] = newItem;
+      else items.unshift(newItem);
+    });
+  }
+  file.setContent(JSON.stringify(items, null, 2));
+  return ContentService.createTextOutput(JSON.stringify({ status: 'ok', count: items.length }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function getOrCreateBridgeFile() {
+  const files = DriveApp.getFilesByName(SYNC_FILE_NAME);
+  if (files.hasNext()) return files.next();
+  return DriveApp.createFile(SYNC_FILE_NAME, '[]', MimeType.PLAIN_TEXT);
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全域載入遮罩 (AI 分析中) -->
+    <div id="globalLoader" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="theme-surface border rounded-2xl p-6 max-w-xs w-full text-center shadow-2xl space-y-3">
+            <div class="w-12 h-12 rounded-full border-4 border-blue-500/30 border-t-blue-600 animate-spin mx-auto"></div>
+            <h4 class="font-bold text-base theme-text-primary" id="loaderTitle">Gemini AI 正在解析內容...</h4>
+            <p class="text-xs theme-text-secondary" id="loaderDesc">正在辨識語意、自動分類並生成智慧提醒建議</p>
+        </div>
+    </div>
+
+    <!-- Toast 通知提示 -->
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ===================================================================== -->
+    <!-- Firebase SDK 與應用程式核心邏輯 -->
+    <!-- ===================================================================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // 全域狀態管理
+        window.appState = {
+            items: [],
+            selectedIds: new Set(),
+            activeCategoryFilter: '全部',
+            categories: ['工作專案', '產業研究', '靈感創意', '生活備忘', '影音收藏', '待辦事項'],
+            currentTheme: 'navy',
+            draftItem: null, // 正在新增或編輯的資料暫存
+            currentShareItem: null, // 正在分享的資料
+            latestAnalysisResult: '', // 最新一次 AI 跨資料分析結果
+            chatMessages: [], // AI 分析對話紀錄
+            pendingMedia: null, // { type: 'image' | 'video', dataUrl: string, name: string }
+            pendingLinkPreview: null, // { url, title, description, image, favicon, domain }
+            layoutDensity: 'adaptive', // 'adaptive' | 'compact' | 'spacious'
+            keepWebhookUrl: localStorage.getItem('ai_keep_webhook_url') || '',
+            user: null,
+            db: null,
+            useCloud: false
+        };
+
+        const LOCAL_STORAGE_KEY = 'ai_smart_inspiration_items_v1';
+
+        // 初始化 Firebase 與雲端即時同步 (具備安全降級機制)
+        async function initStorage() {
+            const statusText = document.getElementById('syncStatusText');
+            try {
+                if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                    const app = initializeApp(firebaseConfig);
+                    const auth = getAuth(app);
+                    const db = getFirestore(app);
+                    window.appState.db = db;
+                    window.appState.appId = appId;
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+
+                    onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            window.appState.user = user;
+                            window.appState.useCloud = true;
+                            statusText.textContent = '雲端即時同步中';
+                            subscribeToCloudItems(db, appId, user.uid);
+                        }
+                    });
+                } else {
+                    throw new Error('No cloud config');
+                }
+            } catch (err) {
+                console.warn('切換至本機離線儲存模式:', err.message);
+                window.appState.useCloud = false;
+                statusText.textContent = '本機高速儲存';
+                loadFromLocalStorage();
+            }
+        }
+
+        // 訂閱 Firestore 資料變更
+        function subscribeToCloudItems(db, appId, userId) {
+            const colRef = collection(db, 'artifacts', appId, 'users', userId, 'knowledge_items');
+            onSnapshot(colRef, (snapshot) => {
+                const fetched = [];
+                snapshot.forEach((docSnap) => {
+                    fetched.push(docSnap.data());
+                });
+                // 依建立時間新到舊排序
+                fetched.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                window.appState.items = fetched;
+                syncCategoriesFromItems();
+                saveToLocalStorage(fetched);
+                renderCategoryFilters();
+                renderCards();
+            }, (error) => {
+                console.error('Firestore 監聽異常，啟用本機備援:', error);
+                document.getElementById('syncStatusText').textContent = '本機備援模式';
+                loadFromLocalStorage();
+            });
+        }
+
+        // 本機儲存讀寫
+        function loadFromLocalStorage() {
+            try {
+                const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+                if (raw) {
+                    window.appState.items = JSON.parse(raw);
+                    syncCategoriesFromItems();
+                }
+            } catch (e) {
+                console.error('讀取本機資料失敗', e);
+            }
+            renderCategoryFilters();
+            renderCards();
+        }
+
+        function saveToLocalStorage(items) {
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items));
+            } catch (e) {
+                console.warn('本機儲存空間已滿（可能包含較大媒體檔）', e);
+            }
+        }
+
+        // 統一寫入資料 (同時支援雲端 Firestore 與本機)
+        window.persistItem = async function(item) {
+            const idx = window.appState.items.findIndex(i => i.id === item.id);
+            if (idx >= 0) {
+                window.appState.items[idx] = item;
+            } else {
+                window.appState.items.unshift(item);
+            }
+            syncCategoriesFromItems();
+            saveToLocalStorage(window.appState.items);
+            renderCategoryFilters();
+            renderCards();
+
+            if (window.appState.useCloud && window.appState.user && window.appState.db) {
+                try {
+                    const docRef = doc(window.appState.db, 'artifacts', window.appState.appId, 'users', window.appState.user.uid, 'knowledge_items', item.id);
+                    await setDoc(docRef, item);
+                } catch (err) {
+                    console.error('雲端同步寫入失敗:', err);
+                }
+            }
+        };
+
+        // 統一刪除資料
+        window.removeItemById = async function(id) {
+            window.appState.items = window.appState.items.filter(i => i.id !== id);
+            window.appState.selectedIds.delete(id);
+            updateMultiSelectUI();
+            saveToLocalStorage(window.appState.items);
+            renderCategoryFilters();
+            renderCards();
+
+            if (window.appState.useCloud && window.appState.user && window.appState.db) {
+                try {
+                    const docRef = doc(window.appState.db, 'artifacts', window.appState.appId, 'users', window.appState.user.uid, 'knowledge_items', id);
+                    await deleteDoc(docRef);
+                } catch (err) {
+                    console.error('雲端刪除失敗:', err);
+                }
+            }
+        };
+
+        function syncCategoriesFromItems() {
+            const set = new Set(['工作專案', '產業研究', '靈感創意', '生活備忘', '影音收藏', '待辦事項']);
+            window.appState.items.forEach(item => {
+                if (Array.isArray(item.categories)) {
+                    item.categories.forEach(c => set.add(c));
+                }
+            });
+            window.appState.categories = Array.from(set);
+        }
+
+        // 啟動初始化
+        initStorage();
+    </script>
+
+    <!-- ===================================================================== -->
+    <!-- UI 互動、Gemini AI 整合、媒體處理與分享核心腳本 -->
+    <!-- ===================================================================== -->
+    <script>
+        const GEMINI_API_KEY = ""; // 執行環境自動注入金鑰
+        const GEMINI_MODEL = "gemini-3-flash-preview";
+
+        // ---------------------------------------------------------------------
+        // 1. 主題切換器 & 動態版面密度切換
+        // ---------------------------------------------------------------------
+        function setTheme(themeName) {
+            document.body.setAttribute('data-theme', themeName);
+            window.appState.currentTheme = themeName;
+            document.querySelectorAll('.theme-switcher-btn').forEach(btn => {
+                if (btn.dataset.themeBtn === themeName) {
+                    btn.classList.add('theme-surface', 'shadow-xs', 'theme-text-primary', 'font-bold');
+                } else {
+                    btn.classList.remove('theme-surface', 'shadow-xs', 'theme-text-primary', 'font-bold');
+                    btn.classList.add('theme-text-secondary');
+                }
+            });
+        }
+
+        function setLayoutDensity(density) {
+            window.appState.layoutDensity = density;
+            const grid = document.getElementById('cardsContainer');
+            if (grid) grid.setAttribute('data-density', density);
+
+            document.querySelectorAll('.density-btn').forEach(btn => {
+                if (btn.dataset.densityBtn === density) {
+                    btn.classList.add('theme-surface', 'shadow-xs', 'theme-text-primary', 'font-bold');
+                } else {
+                    btn.classList.remove('theme-surface', 'shadow-xs', 'theme-text-primary', 'font-bold');
+                    btn.classList.add('theme-text-secondary');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTheme('navy');
+            setLayoutDensity('adaptive');
+            updateKeepIndicatorUI();
+        });
+
+        // ---------------------------------------------------------------------
+        // 2. 全域剪貼簿貼上圖片支援 (Ctrl+V)、網址自動預覽擷取 & 檔案上傳
+        // ---------------------------------------------------------------------
+        let urlFetchDebounceTimer = null;
+        let lastFetchedUrl = '';
+
+        function handleQuickTextChange() {
+            const text = document.getElementById('quickInputText').value;
+            const urlMatch = text.match(/https?:\/\/[^\s"'<>]+/i);
+            if (urlMatch && urlMatch[0] !== lastFetchedUrl) {
+                triggerLinkPreviewFetch(urlMatch[0]);
+            }
+        }
+
+        function handleQuickUrlInput() {
+            const urlVal = document.getElementById('quickInputUrl').value.trim();
+            if (/^https?:\/\/[^\s"'<>]+$/i.test(urlVal) && urlVal !== lastFetchedUrl) {
+                triggerLinkPreviewFetch(urlVal);
+            }
+        }
+
+        function triggerLinkPreviewFetch(targetUrl) {
+            clearTimeout(urlFetchDebounceTimer);
+            urlFetchDebounceTimer = setTimeout(() => {
+                fetchRichLinkPreview(targetUrl);
+            }, 600);
+        }
+
+        async function fetchRichLinkPreview(targetUrl) {
+            lastFetchedUrl = targetUrl;
+            const box = document.getElementById('inputLinkPreviewBox');
+            const loading = document.getElementById('linkPreviewLoading');
+            const content = document.getElementById('linkPreviewContent');
+
+            box.classList.remove('hidden');
+            loading.classList.remove('hidden');
+            content.classList.add('hidden');
+
+            let domain = '';
+            try {
+                domain = new URL(targetUrl).hostname;
+            } catch (e) {
+                domain = targetUrl;
+            }
+
+            let previewData = {
+                url: targetUrl,
+                title: domain,
+                description: targetUrl,
+                image: '',
+                favicon: `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+                domain: domain
+            };
+
+            const ytId = extractYouTubeId(targetUrl);
+            if (ytId) {
+                previewData.title = 'YouTube 影音內容';
+                previewData.description = '點擊播放或透過 AI 解析影片脈絡';
+                previewData.image = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+            }
+
+            try {
+                // 使用 Microlink API 擷取 Open Graph 中繼資料與網頁預覽圖
+                const apiUrl = `https://api.microlink.io/?url=${encodeURIComponent(targetUrl)}&screenshot=true`;
+                const res = await fetch(apiUrl);
+                if (res.ok) {
+                    const json = await res.json();
+                    if (json.status === 'success' && json.data) {
+                        const d = json.data;
+                        previewData.title = d.title || previewData.title;
+                        previewData.description = d.description || previewData.description;
+                        previewData.image = d.image?.url || d.screenshot?.url || previewData.image;
+                        previewData.favicon = d.logo?.url || previewData.favicon;
+                    }
+                }
+            } catch (err) {
+                console.warn('Microlink 擷取降級，啟用網頁縮圖備援:', err);
+                if (!previewData.image) {
+                    previewData.image = `https://s0.wp.com/mshots/v1/${encodeURIComponent(targetUrl)}?w=600`;
+                }
+            }
+
+            window.appState.pendingLinkPreview = previewData;
+            renderInputLinkPreview(previewData);
+        }
+
+        function renderInputLinkPreview(data) {
+            const loading = document.getElementById('linkPreviewLoading');
+            const content = document.getElementById('linkPreviewContent');
+            const imgWrap = document.getElementById('linkPreviewImageWrap');
+            const imgEl = document.getElementById('linkPreviewImg');
+            const favEl = document.getElementById('linkPreviewFavicon');
+
+            loading.classList.add('hidden');
+            content.classList.remove('hidden');
+
+            document.getElementById('linkPreviewDomain').textContent = data.domain;
+            document.getElementById('linkPreviewTitle').textContent = data.title;
+            document.getElementById('linkPreviewDesc').textContent = data.description;
+
+            if (data.favicon) {
+                favEl.src = data.favicon;
+                favEl.classList.remove('hidden');
+            } else {
+                favEl.classList.add('hidden');
+            }
+
+            if (data.image) {
+                imgEl.src = data.image;
+                imgWrap.classList.remove('hidden');
+            } else {
+                imgWrap.classList.add('hidden');
+            }
+        }
+
+        function clearLinkPreview() {
+            window.appState.pendingLinkPreview = null;
+            lastFetchedUrl = '';
+            document.getElementById('inputLinkPreviewBox').classList.add('hidden');
+        }
+
+        document.addEventListener('paste', (event) => {
+            // 若正在開啟 Modal 則不攔截全域貼上
+            if (!document.getElementById('classifyModal').classList.contains('hidden') ||
+                !document.getElementById('aiAnalysisModal').classList.contains('hidden')) {
+                return;
+            }
+            const items = (event.clipboardData || event.originalEvent.clipboardData)?.items;
+            if (!items) return;
+
+            for (const item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const blob = item.getAsFile();
+                    processImageFile(blob, '剪貼簿貼上圖片_' + new Date().toLocaleTimeString('zh-TW', { hour12: false }) + '.png');
+                    showToast('已偵測並附加剪貼簿圖片！', 'success');
+                    break;
+                }
+            }
+        });
+
+        function handleFileUpload(event, mediaType) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (mediaType === 'image') {
+                processImageFile(file, file.name);
+            } else if (mediaType === 'video') {
+                // 影片限制建議小於 8MB 以確保順暢預覽
+                if (file.size > 12 * 1024 * 1024) {
+                    showToast('影片檔案較大，建議使用 12MB 以下影片或直接貼上影片網址連結。', 'warning');
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    setPendingMedia({
+                        type: 'video',
+                        dataUrl: e.target.result,
+                        name: file.name
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+            event.target.value = '';
+        }
+
+        // 壓縮並轉換圖片為 Base64 (確保 Firestore 1MB 限制內與 AI API 傳輸順暢)
+        function processImageFile(file, fileName) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const MAX_DIM = 1024;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height && width > MAX_DIM) {
+                        height *= MAX_DIM / width;
+                        width = MAX_DIM;
+                    } else if (height > MAX_DIM) {
+                        width *= MAX_DIM / height;
+                        height = MAX_DIM;
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+
+                    setPendingMedia({
+                        type: 'image',
+                        dataUrl: compressedDataUrl,
+                        name: fileName
+                    });
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function setPendingMedia(mediaObj) {
+            window.appState.pendingMedia = mediaObj;
+            const previewBox = document.getElementById('inputMediaPreview');
+            const thumbContainer = document.getElementById('previewThumbnailContainer');
+            document.getElementById('previewMediaName').textContent = mediaObj.name;
+
+            if (mediaObj.type === 'image') {
+                thumbContainer.innerHTML = `<img src="${mediaObj.dataUrl}" class="w-full h-full object-cover">`;
+                document.getElementById('previewMediaMeta').textContent = '圖片已就緒 · Gemini 視覺 AI 將自動辨識圖中資訊';
+            } else {
+                thumbContainer.innerHTML = `<i class="fa-solid fa-film text-2xl text-purple-500"></i>`;
+                document.getElementById('previewMediaMeta').textContent = '影片已就緒 · 支援卡片內直接播放預覽';
+            }
+            previewBox.classList.remove('hidden');
+            previewBox.classList.add('flex');
+        }
+
+        function clearInputMedia() {
+            window.appState.pendingMedia = null;
+            const previewBox = document.getElementById('inputMediaPreview');
+            previewBox.classList.add('hidden');
+            previewBox.classList.remove('flex');
+        }
+
+        function toggleUrlInput() {
+            const row = document.getElementById('urlInputRow');
+            row.classList.toggle('hidden');
+            if (!row.classList.contains('hidden')) {
+                document.getElementById('quickInputUrl').focus();
+            }
+        }
+
+        // 解析 YouTube 影片 ID 以便內嵌預覽
+        function extractYouTubeId(url) {
+            if (!url) return null;
+            const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regExp);
+            return match ? match[1] : null;
+        }
+
+        // ---------------------------------------------------------------------
+        // 3. Gemini AI 呼叫核心 (含指數退避重試)
+        // ---------------------------------------------------------------------
+        async function callGeminiAPI(payload, retries = 3) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+            for (let attempt = 0; attempt <= retries; attempt++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (err) {
+                    if (attempt === retries) throw err;
+                    await new Promise(res => setTimeout(res, Math.pow(2, attempt) * 1000));
+                }
+            }
+        }
+
+        // 新增資料並觸發 AI 自動分類與提醒建議
+        async function startAddAndAnalyze() {
+            const rawText = document.getElementById('quickInputText').value.trim();
+            let rawUrl = document.getElementById('quickInputUrl').value.trim();
+            const media = window.appState.pendingMedia;
+            const linkPreview = window.appState.pendingLinkPreview;
+
+            // 若使用者直接將網址貼在主文字框中，自動偵測擷取
+            const urlInText = rawText.match(/https?:\/\/[^\s"'<>]+/i);
+            if (!rawUrl && urlInText) {
+                rawUrl = urlInText[0];
+            } else if (!rawUrl && linkPreview?.url) {
+                rawUrl = linkPreview.url;
+            }
+
+            if (!rawText && !rawUrl && !media) {
+                showToast('請先輸入文字、貼上網址或上傳圖片/影片！', 'warning');
+                return;
+            }
+
+            showLoader('Gemini AI 正在智慧分析...', '正在辨識內容重點、網頁中繼資料、自動歸類標籤並推算提醒情境');
+
+            const existingCats = window.appState.categories.join('、');
+            const linkMetaContext = linkPreview
+                ? `\n網頁預覽標題：${linkPreview.title}\n網頁預覽摘要：${linkPreview.description}`
+                : '';
+
+            const promptText = `你是一位專業的「AI 智慧多媒體知識與靈感管家」。請分析使用者輸入的資料（可能包含文字、網址、網頁預覽中繼資料或圖片），並回傳 JSON 格式的歸類與提醒建議。
+
+現有常用類別標籤：${existingCats}
+
+使用者輸入文字：${rawText || '（無文字，請依據圖片或網址判斷）'}
+附加網址連結：${rawUrl || '（無）'}${linkMetaContext}
+附加媒體類型：${media ? (media.type === 'image' ? '圖片' : '影片：' + media.name) : '無'}
+
+請根據內容提供：
+1. title: 簡潔精準的繁體中文標題（18字以內，若有網頁預覽標題可參考優化）。
+2. summary: 若原文字很短或只有圖片/網址，請結合網頁摘要或圖片描述補充精準重點；若原文字已很完整，則保留並潤飾重點（繁體中文）。
+3. suggestedCategories: 從現有類別中挑選 1~3 個最貼切的類別（陣列），若現有類別都不適合，可創造 1 個簡短精準的新類別（如「旅遊規劃」、「健康醫療」）。
+4. suggestedLocation: 建議的提醒地點（例如：「辦公室」、「家中」、「機場」、「賣場」或留空 ""）。
+5. suggestedContext: 建議的觸發提醒情境（例如：「開會前檢視」、「通勤閱讀」、「週末整理」、「電腦前處理」）。`;
+
+            const parts = [{ text: promptText }];
+            if (media && media.type === 'image' && media.dataUrl) {
+                const base64Data = media.dataUrl.split(',')[1];
+                const mimeType = media.dataUrl.split(';')[0].split(':')[1] || 'image/jpeg';
+                parts.push({
+                    inlineData: {
+                        mimeType: mimeType,
+                        data: base64Data
+                    }
+                });
+            }
+
+            let aiResult = {
+                title: linkPreview?.title || (rawText ? rawText.slice(0, 18) : (media ? media.name : '新靈感筆記')),
+                summary: rawText || linkPreview?.description || (rawUrl ? `連結資料：${rawUrl}` : '多媒體靈感資料'),
+                suggestedCategories: ['靈感創意'],
+                suggestedLocation: '',
+                suggestedContext: '空閒時檢視'
+            };
+
+            try {
+                const payload = {
+                    contents: [{ role: 'user', parts }],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                title: { type: "STRING" },
+                                summary: { type: "STRING" },
+                                suggestedCategories: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                suggestedLocation: { type: "STRING" },
+                                suggestedContext: { type: "STRING" }
+                            },
+                            required: ["title", "summary", "suggestedCategories", "suggestedLocation", "suggestedContext"]
+                        }
+                    }
+                };
+                const response = await callGeminiAPI(payload);
+                const jsonText = response?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (jsonText) {
+                    aiResult = JSON.parse(jsonText);
+                }
+            } catch (err) {
+                console.warn('AI 自動分類降級為本機規則判斷:', err);
+                if (rawUrl && extractYouTubeId(rawUrl)) aiResult.suggestedCategories = ['影音收藏', '靈感創意'];
+                else if (media?.type === 'video') aiResult.suggestedCategories = ['影音收藏'];
+            } finally {
+                hideLoader();
+            }
+
+            // 準備草稿資料並開啟「AI 智慧歸類與情境提醒確認面板」
+            const draft = {
+                id: 'item_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+                title: aiResult.title,
+                content: aiResult.summary,
+                url: rawUrl || '',
+                linkPreview: linkPreview || (rawUrl ? {
+                    url: rawUrl,
+                    title: aiResult.title,
+                    description: aiResult.summary,
+                    image: extractYouTubeId(rawUrl)
+                        ? `https://img.youtube.com/vi/${extractYouTubeId(rawUrl)}/hqdefault.jpg`
+                        : `https://s0.wp.com/mshots/v1/${encodeURIComponent(rawUrl)}?w=600`,
+                    domain: (() => { try { return new URL(rawUrl).hostname; } catch(e) { return rawUrl; } })()
+                } : null),
+                mediaType: media ? media.type : (extractYouTubeId(rawUrl) ? 'youtube' : (rawUrl ? 'link' : 'text')),
+                mediaData: media ? media.dataUrl : '',
+                mediaName: media ? media.name : '',
+                categories: aiResult.suggestedCategories && aiResult.suggestedCategories.length > 0 ? aiResult.suggestedCategories : ['靈感創意'],
+                reminder: {
+                    time: '',
+                    location: aiResult.suggestedLocation || '',
+                    context: aiResult.suggestedContext || ''
+                },
+                keepSyncStatus: 'pending',
+                createdAt: Date.now(),
+                isEdit: false
+            };
+
+            openClassifyModal(draft);
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. AI 智慧歸類與提醒確認面板 (新增與編輯共用)
+        // ---------------------------------------------------------------------
+        function openClassifyModal(itemObj) {
+            window.appState.draftItem = JSON.parse(JSON.stringify(itemObj));
+            const draft = window.appState.draftItem;
+
+            document.getElementById('classifyModalTitle').textContent = draft.isEdit ? '編輯資料與重新設定分類提醒' : 'AI 智慧歸類與情境提醒確認';
+            document.getElementById('aiConfidenceHint').textContent = draft.isEdit ? '可自由調整複選類別' : '✨ AI 已自動勾選建議類別';
+            document.getElementById('modalItemTitle').value = draft.title || '';
+            document.getElementById('modalItemContent').value = draft.content || '';
+            document.getElementById('modalReminderTime').value = draft.reminder?.time || '';
+            document.getElementById('modalReminderLocation').value = draft.reminder?.location || '';
+            document.getElementById('modalReminderContext').value = draft.reminder?.context || '';
+
+            // 顯示附加媒體/網頁預覽狀態
+            const mediaSec = document.getElementById('modalMediaSection');
+            const mediaDisp = document.getElementById('modalMediaDisplay');
+            if (draft.mediaData || draft.url) {
+                mediaSec.classList.remove('hidden');
+                if (draft.mediaType === 'image' && draft.mediaData) {
+                    mediaDisp.innerHTML = `<div class="flex items-center gap-3"><img src="${draft.mediaData}" class="w-14 h-14 rounded-lg object-cover"><span>圖片附件：${draft.mediaName || '已附加圖片'}</span></div>`;
+                } else if (draft.mediaType === 'video' && draft.mediaData) {
+                    mediaDisp.innerHTML = `<div class="flex items-center gap-2"><i class="fa-solid fa-video text-purple-500"></i><span>影片附件：${draft.mediaName || '已附加影片'}</span></div>`;
+                } else if (draft.url) {
+                    const thumb = draft.linkPreview?.image ? `<img src="${draft.linkPreview.image}" class="w-16 h-12 rounded-lg object-cover flex-shrink-0" onerror="this.style.display='none'">` : '';
+                    mediaDisp.innerHTML = `<div class="flex items-center gap-3 overflow-hidden">${thumb}<div class="min-w-0"><p class="font-semibold truncate">${escapeHtml(draft.linkPreview?.title || draft.url)}</p><a href="${draft.url}" target="_blank" class="underline truncate block text-sky-500">${draft.url}</a></div></div>`;
+                }
+            } else {
+                mediaSec.classList.add('hidden');
+            }
+
+            // 合併新建議的類別至系統類別庫
+            draft.categories.forEach(c => {
+                if (!window.appState.categories.includes(c)) {
+                    window.appState.categories.push(c);
+                }
+            });
+
+            renderModalCategoryCheckboxes();
+            document.getElementById('classifyModal').classList.remove('hidden');
+        }
+
+        function renderModalCategoryCheckboxes() {
+            const container = document.getElementById('modalCategoryCheckboxes');
+            const selectedCats = window.appState.draftItem.categories || [];
+            container.innerHTML = window.appState.categories.map(cat => {
+                const isChecked = selectedCats.includes(cat);
+                return `
+                    <button type="button" onclick="toggleDraftCategory('${cat}')"
+                        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition flex items-center gap-1.5 cursor-pointer
+                        ${isChecked ? 'theme-btn-primary border-transparent shadow-xs' : 'theme-surface theme-border theme-text-secondary hover:theme-text-primary'}">
+                        <i class="fa-solid ${isChecked ? 'fa-square-check' : 'fa-square'}"></i>
+                        <span>${cat}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function toggleDraftCategory(cat) {
+            const list = window.appState.draftItem.categories;
+            const idx = list.indexOf(cat);
+            if (idx >= 0) {
+                list.splice(idx, 1);
+            } else {
+                list.push(cat);
+            }
+            renderModalCategoryCheckboxes();
+        }
+
+        function addCustomCategory() {
+            const input = document.getElementById('newCustomCategoryInput');
+            const val = input.value.trim();
+            if (!val) return;
+            if (!window.appState.categories.includes(val)) {
+                window.appState.categories.push(val);
+            }
+            if (!window.appState.draftItem.categories.includes(val)) {
+                window.appState.draftItem.categories.push(val);
+            }
+            input.value = '';
+            renderModalCategoryCheckboxes();
+        }
+
+        function setQuickTime(preset) {
+            const now = new Date();
+            if (preset === 'today18') {
+                now.setHours(18, 0, 0, 0);
+            } else if (preset === 'tomorrow9') {
+                now.setDate(now.getDate() + 1);
+                now.setHours(9, 0, 0, 0);
+            }
+            // 格式化為 YYYY-MM-DDTHH:mm
+            const tzOffset = now.getTimezoneOffset() * 60000;
+            const localISOTime = (new Date(now - tzOffset)).toISOString().slice(0, 16);
+            document.getElementById('modalReminderTime').value = localISOTime;
+        }
+
+        function closeClassifyModal() {
+            document.getElementById('classifyModal').classList.add('hidden');
+            window.appState.draftItem = null;
+        }
+
+        async function confirmAndSaveItem() {
+            const draft = window.appState.draftItem;
+            if (!draft) return;
+
+            const title = document.getElementById('modalItemTitle').value.trim() || '未命名靈感';
+            const content = document.getElementById('modalItemContent').value.trim();
+            const reminderTime = document.getElementById('modalReminderTime').value;
+            const reminderLocation = document.getElementById('modalReminderLocation').value.trim();
+            const reminderContext = document.getElementById('modalReminderContext').value.trim();
+            const shouldSyncKeep = document.getElementById('modalSyncToKeepCheckbox').checked;
+
+            if (draft.categories.length === 0) {
+                draft.categories = ['靈感創意'];
+            }
+
+            const finalItem = {
+                id: draft.id,
+                title,
+                content,
+                url: draft.url || '',
+                linkPreview: draft.linkPreview || null,
+                mediaType: draft.mediaType || 'text',
+                mediaData: draft.mediaData || '',
+                mediaName: draft.mediaName || '',
+                categories: draft.categories,
+                reminder: {
+                    time: reminderTime,
+                    location: reminderLocation,
+                    context: reminderContext
+                },
+                keepSyncStatus: draft.keepSyncStatus || 'pending',
+                createdAt: draft.createdAt || Date.now(),
+                updatedAt: Date.now()
+            };
+
+            await window.persistItem(finalItem);
+
+            if (shouldSyncKeep) {
+                await syncSingleItemToKeep(finalItem, true);
+            }
+
+            // 若是新增流程，清空上方快速輸入框
+            if (!draft.isEdit) {
+                document.getElementById('quickInputText').value = '';
+                document.getElementById('quickInputUrl').value = '';
+                document.getElementById('urlInputRow').classList.add('hidden');
+                clearInputMedia();
+                clearLinkPreview();
+                showToast('已成功歸類並儲存靈感資料！', 'success');
+            } else {
+                showToast('資料與提醒設定已更新！', 'success');
+            }
+
+            closeClassifyModal();
+        }
+
+        function editItem(id) {
+            const item = window.appState.items.find(i => i.id === id);
+            if (!item) return;
+            openClassifyModal({ ...item, isEdit: true });
+        }
+
+        async function deleteItem(id) {
+            await window.removeItemById(id);
+            showToast('已刪除該筆資料', 'info');
+        }
+
+        // ---------------------------------------------------------------------
+        // 5. 渲染類別篩選與資料卡片
+        // ---------------------------------------------------------------------
+        function renderCategoryFilters() {
+            const bar = document.getElementById('categoryFilterBar');
+            const active = window.appState.activeCategoryFilter;
+            const allCats = ['全部', ...window.appState.categories];
+
+            bar.innerHTML = allCats.map(cat => {
+                const count = cat === '全部'
+                    ? window.appState.items.length
+                    : window.appState.items.filter(i => (i.categories || []).includes(cat)).length;
+
+                if (cat !== '全部' && count === 0) return '';
+
+                const isSelected = active === cat;
+                return `
+                    <button onclick="setCategoryFilter('${cat}')"
+                        class="px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 cursor-pointer
+                        ${isSelected ? 'theme-btn-primary shadow-sm' : 'theme-surface border theme-border theme-text-secondary hover:theme-text-primary'}">
+                        <span>${cat}</span>
+                        <span class="px-1.5 py-0.2 rounded-full text-[10px] ${isSelected ? 'bg-white/25 text-white' : 'theme-surface-secondary theme-text-muted'}">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setCategoryFilter(cat) {
+            window.appState.activeCategoryFilter = cat;
+            renderCategoryFilters();
+            renderCards();
+        }
+
+        function renderCards() {
+            const container = document.getElementById('cardsContainer');
+            const emptyState = document.getElementById('emptyState');
+            const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+            const catFilter = window.appState.activeCategoryFilter;
+
+            const filtered = window.appState.items.filter(item => {
+                const matchCat = catFilter === '全部' || (item.categories || []).includes(catFilter);
+                if (!matchCat) return false;
+                if (!keyword) return true;
+
+                const hay = [
+                    item.title,
+                    item.content,
+                    item.url,
+                    ...(item.categories || []),
+                    item.reminder?.location,
+                    item.reminder?.context
+                ].join(' ').toLowerCase();
+
+                return hay.includes(keyword);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            container.innerHTML = filtered.map(item => buildCardHTML(item)).join('');
+        }
+
+        function buildCardHTML(item) {
+            const isSelected = window.appState.selectedIds.has(item.id);
+            const ytId = extractYouTubeId(item.url);
+
+            // 1. 依內容適度調整顯示區域大小 (動態判斷是否跨越 2 欄與內容長度分級)
+            const contentLen = (item.content || '').length;
+            const hasRichMedia = (item.mediaType === 'image' && item.mediaData) ||
+                                 (item.mediaType === 'video' && item.mediaData) ||
+                                 Boolean(ytId) ||
+                                 Boolean(item.linkPreview?.image);
+            const isWideCard = hasRichMedia || contentLen > 160;
+            const isLongText = contentLen > 240;
+            const spanClass = isWideCard ? 'card-span-wide' : '';
+
+            // 媒體渲染區塊
+            let mediaHTML = '';
+            if (item.mediaType === 'image' && item.mediaData) {
+                mediaHTML = `
+                    <div class="relative group rounded-xl overflow-hidden bg-black/5 mb-3 cursor-zoom-in" onclick="openLightbox('${item.mediaData}', '${escapeHtml(item.title)}')">
+                        <img src="${item.mediaData}" alt="${escapeHtml(item.title)}" class="w-full max-h-80 object-cover transition duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full transition">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1"></i>點擊放大
+                            </span>
+                        </div>
+                    </div>
+                `;
+            } else if (item.mediaType === 'video' && item.mediaData) {
+                mediaHTML = `
+                    <div class="rounded-xl overflow-hidden bg-black mb-3">
+                        <video src="${item.mediaData}" controls class="w-full max-h-72"></video>
+                    </div>
+                `;
+            } else if (ytId) {
+                mediaHTML = `
+                    <div class="rounded-xl overflow-hidden aspect-video bg-black mb-3 shadow-inner">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/${ytId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+
+            // 2. 豐富網頁預覽圖卡片 (Rich Link Preview Card)
+            let urlHTML = '';
+            if (item.url) {
+                const lp = item.linkPreview;
+                const domain = lp?.domain || (() => { try { return new URL(item.url).hostname; } catch(e) { return item.url; } })();
+                const previewImgUrl = lp?.image || (!ytId ? `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.url)}?w=600` : '');
+                const favUrl = lp?.favicon || `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+
+                if (previewImgUrl && !ytId) {
+                    urlHTML = `
+                        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="group block rounded-xl theme-surface-secondary border theme-border overflow-hidden mb-3 hover:border-sky-500/60 transition">
+                            <div class="relative h-40 sm:h-44 w-full bg-black/10 overflow-hidden">
+                                <img src="${escapeHtml(previewImgUrl)}" alt="網頁預覽圖" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.parentElement.style.display='none'">
+                                <span class="absolute bottom-2 right-2 bg-black/70 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>開啟網頁
+                                </span>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center gap-1.5 text-[11px] theme-text-muted mb-1">
+                                    <img src="${escapeHtml(favUrl)}" class="w-3.5 h-3.5 rounded-xs" onerror="this.style.display='none'">
+                                    <span class="truncate font-medium">${escapeHtml(domain)}</span>
+                                </div>
+                                <p class="text-xs font-bold theme-text-primary line-clamp-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">${escapeHtml(lp?.title || item.title)}</p>
+                                ${lp?.description ? `<p class="text-[11px] theme-text-secondary line-clamp-2 mt-0.5">${escapeHtml(lp.description)}</p>` : ''}
+                            </div>
+                        </a>
+                    `;
+                } else {
+                    urlHTML = `
+                        <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 rounded-xl theme-surface-secondary border theme-border text-xs text-sky-600 dark:text-sky-400 hover:underline mb-3 truncate">
+                            <img src="${escapeHtml(favUrl)}" class="w-3.5 h-3.5 rounded-xs flex-shrink-0" onerror="this.style.display='none'">
+                            <span class="truncate">${escapeHtml(item.url)}</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square flex-shrink-0 ml-auto"></i>
+                        </a>
+                    `;
+                }
+            }
+
+            // 提醒徽章 (時間、地點、情境)
+            const rem = item.reminder || {};
+            let reminderBadges = [];
+            if (rem.time) {
+                const formattedTime = rem.time.replace('T', ' ');
+                reminderBadges.push(`<span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-sky-500/15 text-sky-700 dark:text-sky-300 font-medium"><i class="fa-regular fa-clock"></i>${formattedTime}</span>`);
+            }
+            if (rem.location) {
+                reminderBadges.push(`<span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-rose-500/15 text-rose-700 dark:text-rose-300 font-medium"><i class="fa-solid fa-location-dot"></i>${escapeHtml(rem.location)}</span>`);
+            }
+            if (rem.context) {
+                reminderBadges.push(`<span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-300 font-medium"><i class="fa-solid fa-bolt"></i>${escapeHtml(rem.context)}</span>`);
+            }
+
+            const reminderSectionHTML = reminderBadges.length > 0
+                ? `<div class="flex flex-wrap gap-1.5 pt-2.5 mt-2.5 border-t theme-border">${reminderBadges.join('')}</div>`
+                : '';
+
+            // 複選類別標籤
+            const categoriesHTML = (item.categories || []).map(cat =>
+                `<span class="theme-badge text-[11px] font-semibold px-2.5 py-0.5 rounded-full"># ${escapeHtml(cat)}</span>`
+            ).join('');
+
+            // Google Keep 同步狀態徽章
+            let keepStatusBadge = '';
+            if (item.keepSyncStatus === 'synced') {
+                keepStatusBadge = `<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-medium" title="已與 Google Keep 同步"><i class="fa-regular fa-lightbulb"></i>Keep已同步</span>`;
+            } else if (item.keepSyncStatus === 'from_keep') {
+                keepStatusBadge = `<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-600 dark:text-amber-400 font-medium" title="匯入自 Google Keep"><i class="fa-regular fa-lightbulb"></i>來自Keep</span>`;
+            }
+
+            const dateStr = new Date(item.createdAt).toLocaleDateString('zh-TW', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+            return `
+                <article class="adaptive-card ${spanClass} theme-surface rounded-2xl border p-4 flex flex-col justify-between relative ${isSelected ? 'ring-2 ring-indigo-500 border-indigo-500' : 'hover:-translate-y-0.5'}">
+                    <div>
+                        <!-- 卡片頂部：多選勾選框 + 標題 -->
+                        <div class="flex items-start justify-between gap-2 mb-2.5">
+                            <div class="flex items-start gap-2.5 min-w-0">
+                                <button onclick="toggleSelectItem('${item.id}')" title="勾選此資料進行 AI 跨資料分析"
+                                    class="mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center flex-shrink-0 transition cursor-pointer
+                                    ${isSelected ? 'theme-btn-primary border-transparent' : 'theme-surface-secondary theme-border hover:border-indigo-400'}">
+                                    ${isSelected ? '<i class="fa-solid fa-check text-[11px]"></i>' : ''}
+                                </button>
+                                <h3 class="font-bold text-base theme-text-primary leading-snug break-words">${escapeHtml(item.title)}</h3>
+                            </div>
+                        </div>
+
+                        <!-- 媒體預覽區 -->
+                        ${mediaHTML}
+
+                        <!-- 文字內容 (長文支援展開/收合) -->
+                        <div class="mb-3">
+                            <p id="content_text_${item.id}" class="text-sm theme-text-secondary whitespace-pre-line leading-relaxed break-words ${isLongText ? 'line-clamp-5' : ''}">${escapeHtml(item.content)}</p>
+                            ${isLongText ? `<button type="button" onclick="toggleExpandText('${item.id}', this)" class="text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline mt-1">展開全文 <i class="fa-solid fa-chevron-down text-[10px]"></i></button>` : ''}
+                        </div>
+
+                        <!-- 外部連結與豐富網頁預覽 -->
+                        ${urlHTML}
+                    </div>
+
+                    <div>
+                        <!-- 複選類別標籤 -->
+                        <div class="flex flex-wrap gap-1.5">
+                            ${categoriesHTML}
+                        </div>
+
+                        <!-- 情境與時間地點提醒徽章 -->
+                        ${reminderSectionHTML}
+
+                        <!-- 卡片底部工具列：時間 + Keep狀態 + Keep傳送 / 分享 / 編輯 / 刪除 -->
+                        <div class="flex items-center justify-between pt-3 mt-3 border-t theme-border text-xs theme-text-muted gap-1">
+                            <div class="flex items-center gap-1.5 truncate">
+                                <span class="truncate">${dateStr}</span>
+                                ${keepStatusBadge}
+                            </div>
+                            <div class="flex items-center gap-0.5 flex-shrink-0">
+                                <button onclick="sendSingleItemToKeep('${item.id}')" class="p-1.5 rounded-lg hover:bg-amber-500/15 hover:text-amber-600 transition" title="傳送/同步至 Google Keep">
+                                    <i class="fa-regular fa-lightbulb"></i>
+                                </button>
+                                <button onclick="shareItem('${item.id}')" class="p-1.5 rounded-lg hover:bg-sky-500/10 hover:text-sky-600 transition" title="分享此資料">
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                </button>
+                                <button onclick="editItem('${item.id}')" class="p-1.5 rounded-lg hover:bg-indigo-500/10 hover:text-indigo-600 transition" title="編輯修改">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button onclick="deleteItem('${item.id}')" class="p-1.5 rounded-lg hover:bg-rose-500/10 hover:text-rose-600 transition" title="刪除">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function toggleExpandText(itemId, btn) {
+            const p = document.getElementById(`content_text_${itemId}`);
+            if (!p) return;
+            const isClamped = p.classList.contains('line-clamp-5');
+            if (isClamped) {
+                p.classList.remove('line-clamp-5');
+                btn.innerHTML = '收合內容 <i class="fa-solid fa-chevron-up text-[10px]"></i>';
+            } else {
+                p.classList.add('line-clamp-5');
+                btn.innerHTML = '展開全文 <i class="fa-solid fa-chevron-down text-[10px]"></i>';
+            }
+        }
+
+        async function deleteSelectedItems() {
+            const ids = Array.from(window.appState.selectedIds);
+            for (const id of ids) {
+                await window.removeItemById(id);
+            }
+            showToast(`已批次刪除 ${ids.length} 筆資料`, 'info');
+        }
+
+        function openAiAnalysisModal() {
+            const selectedItems = window.appState.items.filter(i => window.appState.selectedIds.has(i.id));
+            if (selectedItems.length === 0) {
+                showToast('請先勾選至少 1 筆資料！', 'warning');
+                return;
+            }
+
+            document.getElementById('analysisSelectedCount').textContent = selectedItems.length;
+            const strip = document.getElementById('selectedItemsStrip');
+            strip.innerHTML = selectedItems.map(item => `
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg theme-surface border theme-border text-xs font-medium theme-text-primary whitespace-nowrap">
+                    <i class="fa-solid ${item.mediaType === 'image' ? 'fa-image text-emerald-500' : (item.mediaType === 'video' || item.mediaType === 'youtube' ? 'fa-video text-purple-500' : 'fa-file-lines text-sky-500')}"></i>
+                    ${escapeHtml(item.title)}
+                </span>
+            `).join('');
+
+            window.appState.chatMessages = [];
+            document.getElementById('aiAnalysisModal').classList.remove('hidden');
+            document.getElementById('aiQuestionInput').focus();
+        }
+
+        function closeAiAnalysisModal() {
+            document.getElementById('aiAnalysisModal').classList.add('hidden');
+        }
+
+        function askPresetQuestion(question) {
+            document.getElementById('aiQuestionInput').value = question;
+            handleAnalysisSubmit(new Event('submit'));
+        }
+
+        async function handleAnalysisSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('aiQuestionInput');
+            const question = input.value.trim();
+            if (!question) return;
+
+            const selectedItems = window.appState.items.filter(i => window.appState.selectedIds.has(i.id));
+            if (selectedItems.length === 0) return;
+
+            input.value = '';
+            appendChatBubble('user', question);
+
+            const loadingBubbleId = 'ai_thinking_' + Date.now();
+            appendChatBubble('ai', '<div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-circle-notch fa-spin text-indigo-500"></i> Gemini AI 正在交叉比對分析所有選取資料與圖片內容...</div>', loadingBubbleId);
+
+            // 組合多筆資料脈絡與多模態圖片
+            const contextParts = [];
+            let textContext = `你是一位頂尖的知識管理顧問與 AI 策略分析師。使用者選取了以下 ${selectedItems.length} 筆資料，請綜合所有文字、分類標籤、提醒時間/地點/情境以及附加的圖片內容，以結構化、清晰易懂的繁體中文 Markdown 回答使用者的問題。\n\n=== 已選取資料清單 ===\n`;
+
+            selectedItems.forEach((item, idx) => {
+                textContext += `\n【資料 ${idx + 1}】標題：${item.title}\n`;
+                textContext += `- 類別標籤：${(item.categories || []).join('、')}\n`;
+                textContext += `- 內容摘要：${item.content}\n`;
+                if (item.url) textContext += `- 相關網址：${item.url}\n`;
+                if (item.reminder?.time || item.reminder?.location || item.reminder?.context) {
+                    textContext += `- 提醒設定：時間=${item.reminder.time || '未定'}, 地點=${item.reminder.location || '未定'}, 情境=${item.reminder.context || '未定'}\n`;
+                }
+                if (item.mediaType === 'image' && item.mediaData) {
+                    textContext += `- （此筆資料附帶一張圖片，請一併檢視分析）\n`;
+                    const base64Data = item.mediaData.split(',')[1];
+                    const mimeType = item.mediaData.split(';')[0].split(':')[1] || 'image/jpeg';
+                    contextParts.push({
+                        inlineData: { mimeType, data: base64Data }
+                    });
+                }
+            });
+
+            textContext += `\n=== 使用者提問 ===\n${question}`;
+            contextParts.unshift({ text: textContext });
+
+            try {
+                const payload = {
+                    contents: [{ role: 'user', parts: contextParts }]
+                };
+                const res = await callGeminiAPI(payload);
+                const answerText = res?.candidates?.[0]?.content?.parts?.[0]?.text || '抱歉，無法取得分析結果，請稍後再試。';
+
+                window.appState.latestAnalysisResult = `【AI 跨資料深度分析報告】\n問題：${question}\n\n${answerText}`;
+                document.getElementById('shareAnalysisBtn').classList.remove('hidden');
+
+                const bubbleEl = document.getElementById(loadingBubbleId);
+                if (bubbleEl) {
+                    bubbleEl.innerHTML = `<div class="markdown-body text-sm theme-text-primary">${marked.parse(answerText)}</div>`;
+                }
+            } catch (err) {
+                console.error('AI 分析錯誤:', err);
+                const bubbleEl = document.getElementById(loadingBubbleId);
+                if (bubbleEl) {
+                    bubbleEl.innerHTML = `<p class="text-sm text-rose-500"><i class="fa-solid fa-triangle-exclamation mr-1"></i> AI 分析連線異常，請檢查網路後重試。</p>`;
+                }
+            }
+        }
+
+        function appendChatBubble(role, htmlContent, customId = '') {
+            const history = document.getElementById('aiChatHistory');
+            const wrapper = document.createElement('div');
+            wrapper.className = role === 'user' ? 'flex justify-end' : 'flex justify-start';
+
+            if (role === 'user') {
+                wrapper.innerHTML = `
+                    <div class="theme-btn-primary rounded-2xl rounded-tr-xs px-4 py-3 max-w-[85%] text-sm shadow-sm">
+                        ${escapeHtml(htmlContent)}
+                    </div>
+                `;
+            } else {
+                wrapper.innerHTML = `
+                    <div id="${customId}" class="theme-surface-secondary border theme-border rounded-2xl rounded-tl-xs px-5 py-4 max-w-[92%] shadow-xs">
+                        ${htmlContent}
+                    </div>
+                `;
+            }
+            history.appendChild(wrapper);
+            history.scrollTop = history.scrollHeight;
+        }
+
+        // ---------------------------------------------------------------------
+        // 8. Google Keep 雙向整合與同步引擎
+        // ---------------------------------------------------------------------
+        function updateKeepIndicatorUI() {
+            const dot = document.getElementById('keepSyncIndicatorDot');
+            if (!dot) return;
+            if (window.appState.keepWebhookUrl) {
+                dot.classList.remove('bg-slate-400');
+                dot.classList.add('bg-emerald-500', 'animate-pulse');
+            } else {
+                dot.classList.remove('bg-emerald-500', 'animate-pulse');
+                dot.classList.add('bg-slate-400');
+            }
+        }
+
+        function openKeepSyncModal() {
+            document.getElementById('keepWebhookUrlInput').value = window.appState.keepWebhookUrl || '';
+            const pendingCount = window.appState.items.filter(i => i.keepSyncStatus !== 'synced').length;
+            document.getElementById('keepPendingCountBadge').textContent = `${pendingCount} 筆待同步`;
+            document.getElementById('keepSyncModal').classList.remove('hidden');
+        }
+
+        function closeKeepSyncModal() {
+            document.getElementById('keepSyncModal').classList.add('hidden');
+        }
+
+        function toggleGasCodeSection() {
+            document.getElementById('gasCodeSection').classList.toggle('hidden');
+        }
+
+        function copyGasScript() {
+            const code = document.getElementById('gasScriptCode').textContent;
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('已複製 Google Apps Script 橋接腳本！', 'success');
+        }
+
+        function saveKeepWebhookConfig() {
+            const url = document.getElementById('keepWebhookUrlInput').value.trim();
+            window.appState.keepWebhookUrl = url;
+            localStorage.setItem('ai_keep_webhook_url', url);
+            updateKeepIndicatorUI();
+            showToast(url ? '已儲存 Google Keep 雙向同步端點！' : '已清除端點設定，切換為快捷連動模式', 'success');
+        }
+
+        // 格式化單筆資料為 Google Keep 標準格式（含 #標籤 與提醒脈絡）
+        function formatForGoogleKeep(item) {
+            const hashTags = (item.categories || []).map(c => `#${c.replace(/\s+/g, '_')}`).join(' ');
+            const rem = item.reminder || {};
+            const remParts = [
+                rem.time ? `⏰ ${rem.time.replace('T', ' ')}` : '',
+                rem.location ? `📍 ${rem.location}` : '',
+                rem.context ? `⚡ ${rem.context}` : ''
+            ].filter(Boolean);
+
+            let body = `${item.content || ''}\n\n`;
+            if (item.url) body += `🔗 ${item.url}\n`;
+            if (remParts.length) body += `${remParts.join(' | ')}\n`;
+            if (hashTags) body += `\n${hashTags}`;
+            return body.trim();
+        }
+
+        // 單筆傳送至 Google Keep（支援 Webhook 背景同步 + 快捷直開 Google Keep）
+        async function sendSingleItemToKeep(id) {
+            const item = window.appState.items.find(i => i.id === id);
+            if (!item) return;
+            await syncSingleItemToKeep(item, false);
+        }
+
+        async function syncSingleItemToKeep(item, silent = false) {
+            const keepBody = formatForGoogleKeep(item);
+
+            // 若有設定 Apps Script 雲端橋接端點，執行背景雙向推送
+            if (window.appState.keepWebhookUrl) {
+                try {
+                    await fetch(window.appState.keepWebhookUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            action: 'upsert',
+                            item: {
+                                id: item.id,
+                                title: item.title,
+                                text: keepBody,
+                                labels: item.categories || [],
+                                url: item.url || '',
+                                reminder: item.reminder || {},
+                                updatedAt: Date.now()
+                            }
+                        })
+                    });
+                    item.keepSyncStatus = 'synced';
+                    await window.persistItem(item);
+                    if (!silent) showToast(`「${item.title}」已背景同步至 Google Keep 橋接庫！`, 'success');
+                    return;
+                } catch (err) {
+                    console.warn('Apps Script 同步失敗，降級為快捷連動:', err);
+                }
+            }
+
+            // 快捷連動模式：自動複製含 #標籤 內容並開啟 Google Keep 新增筆記視窗
+            if (!silent) {
+                const fullText = `${item.title}\n\n${keepBody}`;
+                const textarea = document.createElement('textarea');
+                textarea.value = fullText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                item.keepSyncStatus = 'synced';
+                await window.persistItem(item);
+
+                showToast('已複製含 #標籤 筆記！正在開啟 Google Keep，按貼上即可儲存', 'success');
+                const keepUrl = `https://keep.google.com/#NOTE`;
+                window.open(keepUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        async function batchSyncToKeep() {
+            const selected = window.appState.items.filter(i => window.appState.selectedIds.has(i.id));
+            if (selected.length === 0) return;
+            await pushItemsArrayToKeep(selected);
+        }
+
+        async function pushAllToGoogleKeep() {
+            if (window.appState.items.length === 0) {
+                showToast('目前沒有可同步的資料', 'warning');
+                return;
+            }
+            await pushItemsArrayToKeep(window.appState.items);
+            closeKeepSyncModal();
+        }
+
+        async function pushItemsArrayToKeep(itemsList) {
+            if (window.appState.keepWebhookUrl) {
+                showLoader('正在同步至 Google Keep...', `正在推送 ${itemsList.length} 筆資料與 #標籤 至雲端橋接庫`);
+                try {
+                    const formattedPayload = itemsList.map(item => ({
+                        id: item.id,
+                        title: item.title,
+                        text: formatForGoogleKeep(item),
+                        labels: item.categories || [],
+                        url: item.url || '',
+                        reminder: item.reminder || {},
+                        updatedAt: Date.now()
+                    }));
+
+                    await fetch(window.appState.keepWebhookUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'batch_upsert', items: formattedPayload })
+                    });
+
+                    for (const item of itemsList) {
+                        item.keepSyncStatus = 'synced';
+                        await window.persistItem(item);
+                    }
+                    showToast(`已成功將 ${itemsList.length} 筆資料同步至 Google Keep！`, 'success');
+                } catch (err) {
+                    showToast('雲端同步連線失敗，請檢查 Apps Script 網址', 'warning');
+                } finally {
+                    hideLoader();
+                }
+            } else {
+                // 無 Webhook 時，合併所有選取資料複製為 Keep 清單格式並開啟 Google Keep
+                const mergedText = itemsList.map(i => `【${i.title}】\n${formatForGoogleKeep(i)}`).join('\n\n────────────────\n\n');
+                const textarea = document.createElement('textarea');
+                textarea.value = mergedText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                for (const item of itemsList) {
+                    item.keepSyncStatus = 'synced';
+                    await window.persistItem(item);
+                }
+                showToast(`已將 ${itemsList.length} 筆資料（含 #標籤）複製到剪貼簿並開啟 Google Keep！`, 'success');
+                window.open('https://keep.google.com/', '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        // 從 Google Apps Script 端點雙向拉取 Keep 筆記
+        async function pullFromGoogleKeepEndpoint() {
+            if (!window.appState.keepWebhookUrl) {
+                showToast('請先在下方貼上您的 Google Apps Script Web App URL，或使用右側「匯入 JSON」功能！', 'warning');
+                return;
+            }
+            showLoader('正在從 Google Keep 拉取資料...', '正在比對雙向變更並匯入新筆記');
+            try {
+                const res = await fetch(window.appState.keepWebhookUrl);
+                const remoteItems = await res.json();
+                if (!Array.isArray(remoteItems)) throw new Error('Invalid format');
+
+                let importedCount = 0;
+                for (const rItem of remoteItems) {
+                    const exists = window.appState.items.find(local => local.id === rItem.id || local.title === rItem.title);
+                    if (!exists) {
+                        const newItem = {
+                            id: rItem.id || 'keep_' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                            title: rItem.title || '來自 Google Keep 的筆記',
+                            content: rItem.text || '',
+                            url: rItem.url || '',
+                            linkPreview: null,
+                            mediaType: rItem.url ? 'link' : 'text',
+                            mediaData: '',
+                            categories: Array.isArray(rItem.labels) && rItem.labels.length > 0 ? rItem.labels : ['Keep匯入'],
+                            reminder: rItem.reminder || { time: '', location: '', context: '' },
+                            keepSyncStatus: 'from_keep',
+                            createdAt: rItem.updatedAt || Date.now()
+                        };
+                        await window.persistItem(newItem);
+                        importedCount++;
+                    }
+                }
+                showToast(importedCount > 0 ? `成功從 Google Keep 雙向拉取 ${importedCount} 筆新資料！` : '目前已是最新狀態，無新增 Keep 筆記。', 'success');
+                closeKeepSyncModal();
+            } catch (err) {
+                console.error('Pull Keep 失敗:', err);
+                showToast('拉取失敗，請確認 Apps Script 部署權限設為「任何人」', 'warning');
+            } finally {
+                hideLoader();
+            }
+        }
+
+        // 匯入 Google Takeout Keep JSON 檔案
+        function importGoogleKeepJson(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    const notesArray = Array.isArray(parsed) ? parsed : [parsed];
+                    let count = 0;
+
+                    for (const note of notesArray) {
+                        if (note.isTrashed) continue;
+                        const title = note.title || 'Google Keep 匯入筆記';
+                        let content = note.textContent || '';
+                        // 支援 Google Keep 核取方塊清單 (listContent)
+                        if (!content && Array.isArray(note.listContent)) {
+                            content = note.listContent.map(li => `${li.isChecked ? '☑' : '☐'} ${li.text}`).join('\n');
+                        }
+                        if (!title && !content) continue;
+
+                        const labels = Array.isArray(note.labels)
+                            ? note.labels.map(l => l.name).filter(Boolean)
+                            : ['Keep匯入'];
+
+                        const urlMatch = content.match(/https?:\/\/[^\s"'<>]+/i);
+                        const newItem = {
+                            id: 'keep_json_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+                            title,
+                            content,
+                            url: urlMatch ? urlMatch[0] : '',
+                            linkPreview: null,
+                            mediaType: urlMatch ? 'link' : 'text',
+                            mediaData: '',
+                            categories: labels.length > 0 ? labels : ['Keep匯入'],
+                            reminder: { time: '', location: '', context: '匯入自 Google Keep' },
+                            keepSyncStatus: 'from_keep',
+                            createdAt: note.userEditedTimestampUsec ? Math.floor(note.userEditedTimestampUsec / 1000) : Date.now()
+                        };
+                        await window.persistItem(newItem);
+                        count++;
+                    }
+                    showToast(`成功從 Google Keep 匯入 ${count} 筆筆記與標籤！`, 'success');
+                    closeKeepSyncModal();
+                } catch (err) {
+                    showToast('JSON 格式解析失敗，請確認為 Google Keep 匯出檔', 'warning');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // ---------------------------------------------------------------------
+        // 9. 一鍵載入精選範例資料 (生技醫療報告、會議架構圖、旅遊靈感影片、網頁預覽)
+        // ---------------------------------------------------------------------
+        async function loadDemoData() {
+            // 生成一張內建向量圖表轉 DataURL 作為專案架構截圖範例
+            const sampleChartDataUrl = createSampleDiagramDataUrl();
+
+            const demos = [
+                {
+                    id: 'demo_1_' + Date.now(),
+                    title: '2026 全球 AI 精準醫療與新藥研發趨勢報告',
+                    content: '重點摘要：\n1. 生成式 AI 縮短臨床前候選藥物篩選週期達 45%，大幅降低早期研發成本。\n2. 多模態醫療影像結合基因定序，成為腫瘤精準伴隨式診斷主流。\n3. 建議下週部門週會針對「AI 臨床試驗招募自動化」進行可行性評估。',
+                    url: 'https://www.nature.com/subjects/biotechnology',
+                    linkPreview: {
+                        url: 'https://www.nature.com/subjects/biotechnology',
+                        title: 'Biotechnology - Latest research and news | Nature',
+                        description: 'Explore the latest peer-reviewed biotechnology research, AI drug discovery breakthroughs, and clinical genomics insights.',
+                        image: 'https://s0.wp.com/mshots/v1/https%3A%2F%2Fwww.nature.com%2Fsubjects%2Fbiotechnology?w=600',
+                        favicon: 'https://www.google.com/s2/favicons?domain=nature.com&sz=64',
+                        domain: 'www.nature.com'
+                    },
+                    mediaType: 'link',
+                    mediaData: '',
+                    categories: ['產業研究', '工作專案'],
+                    reminder: {
+                        time: getFutureISO(1, 10, 0),
+                        location: '辦公室會議室',
+                        context: '週會簡報前檢視'
+                    },
+                    keepSyncStatus: 'synced',
+                    createdAt: Date.now() - 1000 * 60 * 15
+                },
+                {
+                    id: 'demo_2_' + Date.now(),
+                    title: 'Q4 跨平台產品系統架構與雲端同步設計圖',
+                    content: '白板討論紀錄：前端採用動態自適應網格，後端整合即時雲端資料庫與 Gemini 多模態推論引擎，並與 Google Keep 雙向同步。',
+                    url: '',
+                    linkPreview: null,
+                    mediaType: 'image',
+                    mediaData: sampleChartDataUrl,
+                    mediaName: 'system_architecture_whiteboard.png',
+                    categories: ['工作專案', '靈感創意', '待辦事項'],
+                    reminder: {
+                        time: getFutureISO(0, 17, 30),
+                        location: '研發部門',
+                        context: '電腦前處理規格書'
+                    },
+                    keepSyncStatus: 'pending',
+                    createdAt: Date.now() - 1000 * 60 * 60
+                },
+                {
+                    id: 'demo_3_' + Date.now(),
+                    title: '京都嵐山秋季楓葉秘境與建築美學巡禮 Vlog',
+                    content: '旅遊靈感收藏：影片 04:20 介紹的苔寺預約制庭園與嵐山小火車清晨班次光影極美，適合規劃年底深度文化考察行程。',
+                    url: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
+                    linkPreview: null,
+                    mediaType: 'youtube',
+                    mediaData: '',
+                    categories: ['影音收藏', '靈感創意', '生活備忘'],
+                    reminder: {
+                        time: getFutureISO(3, 20, 0),
+                        location: '家中',
+                        context: '週末整理旅遊清單'
+                    },
+                    keepSyncStatus: 'from_keep',
+                    createdAt: Date.now() - 1000 * 60 * 180
+                },
+                {
+                    id: 'demo_4_' + Date.now(),
+                    title: '跨部門 AI 導入提案簡報準備清單',
+                    content: '1. 彙整生技醫療產業報告數據作為市場痛點佐證。\n2. 附上 Q4 系統架構設計圖說明技術可行性。\n3. 確認預算編列與預期 ROI 評估表。',
+                    url: '',
+                    linkPreview: null,
+                    mediaType: 'text',
+                    mediaData: '',
+                    categories: ['工作專案', '待辦事項'],
+                    reminder: {
+                        time: getFutureISO(1, 9, 0),
+                        location: '辦公室',
+                        context: '開會前檢視'
+                    },
+                    keepSyncStatus: 'synced',
+                    createdAt: Date.now() - 1000 * 60 * 300
+                }
+            ];
+
+            for (const item of demos) {
+                await window.persistItem(item);
+            }
+            showToast('已載入 4 筆精選範例（含網頁預覽圖、自適應寬卡片與 Keep 同步狀態）！', 'success');
+        }
+        }
+
+        function shareLatestAnalysis() {
+            if (!window.appState.latestAnalysisResult) return;
+            window.appState.currentShareItem = {
+                title: 'AI 跨資料深度分析報告',
+                text: window.appState.latestAnalysisResult,
+                url: '',
+                mediaType: 'text',
+                mediaData: ''
+            };
+            openShareModal();
+        }
+
+        function formatItemForShare(item) {
+            let lines = [`📌 ${item.title}`];
+            if (item.categories?.length) lines.push(`🏷️ 類別：${item.categories.join('、')}`);
+            lines.push(`\n${item.content}`);
+            if (item.url) lines.push(`\n🔗 連結：${item.url}`);
+            const rem = item.reminder || {};
+            if (rem.time || rem.location || rem.context) {
+                lines.push(`\n⏰ 提醒設定：${[rem.time?.replace('T', ' '), rem.location, rem.context].filter(Boolean).join(' | ')}`);
+            }
+            lines.push(`\n— 來自「AI 智慧多媒體知識與靈感管家」`);
+            return lines.join('\n');
+        }
+
+        function openShareModal() {
+            const s = window.appState.currentShareItem;
+            if (!s) return;
+
+            document.getElementById('sharePreviewTitle').textContent = s.title;
+            document.getElementById('sharePreviewText').textContent = s.text;
+
+            const copyImgBtn = document.getElementById('copyShareImageBtn');
+            if (s.mediaType === 'image' && s.mediaData) {
+                copyImgBtn.classList.remove('hidden');
+            } else {
+                copyImgBtn.classList.add('hidden');
+            }
+
+            document.getElementById('shareModal').classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+        }
+
+        async function triggerNativeShareFromModal() {
+            const s = window.appState.currentShareItem;
+            if (!s) return;
+
+            if (!navigator.share) {
+                showToast('目前桌面瀏覽器不支援原生系統面板，請使用下方一鍵複製或 Email 分享！', 'info');
+                return;
+            }
+
+            try {
+                const shareData = {
+                    title: s.title,
+                    text: s.text
+                };
+                if (s.url) shareData.url = s.url;
+
+                // 若有圖片且瀏覽器支援分享檔案
+                if (s.mediaType === 'image' && s.mediaData && navigator.canShare) {
+                    const res = await fetch(s.mediaData);
+                    const blob = await res.blob();
+                    const file = new File([blob], 'inspiration.jpg', { type: blob.type });
+                    if (navigator.canShare({ files: [file] })) {
+                        shareData.files = [file];
+                    }
+                }
+
+                await navigator.share(shareData);
+                closeShareModal();
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.warn('原生分享失敗，改用整合面板:', err);
+                    openShareModal();
+                }
+            }
+        }
+
+        function copyShareText() {
+            const s = window.appState.currentShareItem;
+            if (!s) return;
+            const textarea = document.createElement('textarea');
+            textarea.value = s.text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('已複製完整格式化內容至剪貼簿！', 'success');
+        }
+
+        async function copyShareImage() {
+            const s = window.appState.currentShareItem;
+            if (!s || !s.mediaData) return;
+            try {
+                const img = new Image();
+                img.src = s.mediaData;
+                await img.decode();
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                canvas.getContext('2d').drawImage(img, 0, 0);
+                canvas.toBlob(async (blob) => {
+                    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                    showToast('已將圖片複製到剪貼簿，可直接貼上至 LINE 或文件！', 'success');
+                }, 'image/png');
+            } catch (err) {
+                showToast('此瀏覽器限制直接複製圖片，請使用系統原生分享或下載。', 'warning');
+            }
+        }
+
+        function shareViaEmail() {
+            const s = window.appState.currentShareItem;
+            if (!s) return;
+            const subject = encodeURIComponent(s.title);
+            const body = encodeURIComponent(s.text);
+            window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+        }
+
+        function downloadShareMarkdown() {
+            const s = window.appState.currentShareItem;
+            if (!s) return;
+            const blob = new Blob([`# ${s.title}\n\n${s.text}`], { type: 'text/markdown;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${s.title.replace(/[\\/:*?"<>|]/g, '_')}.md`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('已下載 Markdown 筆記檔！', 'success');
+        }
+
+        // ---------------------------------------------------------------------
+        // 8. 一鍵載入精選範例資料 (生技醫療報告、會議架構圖、旅遊靈感影片、採購備忘)
+        // ---------------------------------------------------------------------
+        async function loadDemoData() {
+            // 生成一張內建向量圖表轉 DataURL 作為專案架構截圖範例
+            const sampleChartDataUrl = createSampleDiagramDataUrl();
+
+            const demos = [
+                {
+                    id: 'demo_1_' + Date.now(),
+                    title: '2026 全球 AI 精準醫療與新藥研發趨勢報告',
+                    content: '重點摘要：\n1. 生成式 AI 縮短臨床前候選藥物篩選週期達 45%，大幅降低早期研發成本。\n2. 多模態醫療影像結合基因定序，成為腫瘤精準伴隨式診斷主流。\n3. 建議下週部門週會針對「AI 臨床試驗招募自動化」進行可行性評估。',
+                    url: 'https://www.nature.com/subjects/biotechnology',
+                    mediaType: 'link',
+                    mediaData: '',
+                    categories: ['產業研究', '工作專案'],
+                    reminder: {
+                        time: getFutureISO(1, 10, 0),
+                        location: '辦公室會議室',
+                        context: '週會簡報前檢視'
+                    },
+                    createdAt: Date.now() - 1000 * 60 * 15
+                },
+                {
+                    id: 'demo_2_' + Date.now(),
+                    title: 'Q4 跨平台產品系統架構與雲端同步設計圖',
+                    content: '白板討論紀錄：前端採用響應式卡片網格，後端整合即時雲端資料庫與 Gemini 多模態推論引擎，確保手機與桌機毫秒級同步。',
+                    url: '',
+                    mediaType: 'image',
+                    mediaData: sampleChartDataUrl,
+                    mediaName: 'system_architecture_whiteboard.png',
+                    categories: ['工作專案', '靈感創意', '待辦事項'],
+                    reminder: {
+                        time: getFutureISO(0, 17, 30),
+                        location: '研發部門',
+                        context: '電腦前處理規格書'
+                    },
+                    createdAt: Date.now() - 1000 * 60 * 60
+                },
+                {
+                    id: 'demo_3_' + Date.now(),
+                    title: '京都嵐山秋季楓葉秘境與建築美學巡禮 Vlog',
+                    content: '旅遊靈感收藏：影片 04:20 介紹的苔寺預約制庭園與嵐山小火車清晨班次光影極美，適合規劃年底深度文化考察行程。',
+                    url: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
+                    mediaType: 'youtube',
+                    mediaData: '',
+                    categories: ['影音收藏', '靈感創意', '生活備忘'],
+                    reminder: {
+                        time: getFutureISO(3, 20, 0),
+                        location: '家中',
+                        context: '週末整理旅遊清單'
+                    },
+                    createdAt: Date.now() - 1000 * 60 * 180
+                },
+                {
+                    id: 'demo_4_' + Date.now(),
+                    title: '跨部門 AI 導入提案簡報準備清單',
+                    content: '1. 彙整生技醫療產業報告數據作為市場痛點佐證。\n2. 附上 Q4 系統架構設計圖說明技術可行性。\n3. 確認預算編列與預期 ROI 評估表。',
+                    url: '',
+                    mediaType: 'text',
+                    mediaData: '',
+                    categories: ['工作專案', '待辦事項'],
+                    reminder: {
+                        time: getFutureISO(1, 9, 0),
+                        location: '辦公室',
+                        context: '開會前檢視'
+                    },
+                    createdAt: Date.now() - 1000 * 60 * 300
+                }
+            ];
+
+            for (const item of demos) {
+                await window.persistItem(item);
+            }
+            showToast('已成功載入 4 筆多樣化精選範例資料！試著全選並體驗 AI 跨資料分析吧！', 'success');
+        }
+
+        function createSampleDiagramDataUrl() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 440;
+            const ctx = canvas.getContext('2d');
+
+            // 背景
+            const grad = ctx.createLinearGradient(0, 0, 800, 440);
+            grad.addColorStop(0, '#0f172a');
+            grad.addColorStop(1, '#1e3a8a');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 800, 440);
+
+            // 標題
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px sans-serif';
+            ctx.fillText('AI Knowledge Hub - System Architecture', 40, 55);
+
+            // 繪製架構方塊
+            const boxes = [
+                { x: 50, y: 120, w: 190, h: 110, color: '#0284c7', title: '多模態輸入層', sub: '文字 / 圖片 / 影片 / 連結' },
+                { x: 305, y: 120, w: 190, h: 110, color: '#6366f1', title: 'Gemini AI 核心', sub: '自動歸類 + 跨資料分析' },
+                { x: 560, y: 120, w: 190, h: 110, color: '#10b981', title: '雲端即時同步', sub: 'PC / 平板 / 手機無縫存取' }
+            ];
+
+            boxes.forEach(b => {
+                ctx.fillStyle = b.color;
+                ctx.beginPath();
+                ctx.roundRect(b.x, b.y, b.w, b.h, 16);
+                ctx.fill();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 18px sans-serif';
+                ctx.fillText(b.title, b.x + 18, b.y + 45);
+                ctx.font = '13px sans-serif';
+                ctx.fillStyle = 'rgba(255,255,255,0.85)';
+                ctx.fillText(b.sub, b.x + 18, b.y + 75);
+            });
+
+            // 連接箭頭
+            ctx.strokeStyle = '#93c5fd';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(245, 175); ctx.lineTo(300, 175);
+            ctx.moveTo(500, 175); ctx.lineTo(555, 175);
+            ctx.stroke();
+
+            // 底部里程碑
+            ctx.fillStyle = 'rgba(255,255,255,0.12)';
+            ctx.beginPath();
+            ctx.roundRect(50, 275, 700, 105, 14);
+            ctx.fill();
+            ctx.fillStyle = '#fde047';
+            ctx.font = 'bold 16px sans-serif';
+            ctx.fillText('關鍵里程碑：W1 完成多模態解析 · W2 上線情境提醒引擎 · W3 整合跨文件問答', 75, 320);
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = '14px sans-serif';
+            ctx.fillText('目標指標：分類準確率 > 94% | 跨裝置同步延遲 < 300ms', 75, 352);
+
+            return canvas.toDataURL('image/png');
+        }
+
+        function getFutureISO(addDays, hour, min) {
+            const d = new Date();
+            d.setDate(d.getDate() + addDays);
+            d.setHours(hour, min, 0, 0);
+            const tzOffset = d.getTimezoneOffset() * 60000;
+            return (new Date(d - tzOffset)).toISOString().slice(0, 16);
+        }
+
+        // ---------------------------------------------------------------------
+        // 9. 輔助工具 (燈箱、Loader、Toast、XSS 防護)
+        // ---------------------------------------------------------------------
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImage').src = src;
+            document.getElementById('lightboxCaption').textContent = caption;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        function showLoader(title, desc) {
+            document.getElementById('loaderTitle').textContent = title;
+            document.getElementById('loaderDesc').textContent = desc;
+            document.getElementById('globalLoader').classList.remove('hidden');
+        }
+
+        function hideLoader() {
+            document.getElementById('globalLoader').classList.add('hidden');
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const colors = {
+                success: 'bg-emerald-600 text-white',
+                warning: 'bg-amber-500 text-white',
+                info: 'bg-slate-800 text-white'
+            };
+            const icons = {
+                success: 'fa-circle-check',
+                warning: 'fa-triangle-exclamation',
+                info: 'fa-circle-info'
+            };
+            toast.className = `${colors[type] || colors.info} px-4 py-3 rounded-xl shadow-xl text-xs sm:text-sm font-medium flex items-center gap-2.5 transition-all duration-300 transform translate-x-0`;
+            toast.innerHTML = `<i class="fa-solid ${icons[type] || icons.info}"></i><span>${escapeHtml(message)}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3200);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
 </body>
 </html>
